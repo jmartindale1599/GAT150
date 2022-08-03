@@ -1,19 +1,11 @@
 
-#include <iostream>
-
 #include "Engine.h"
+
+#include <iostream>
 
 using namespace std;
 
 int main() {
-
-	cout << "Henlo World" << endl;
-
-	kronk::innitMemory();
-
-	neu::SetFilePath("../Assets");
-
-	cout << neu::GetFilePath() << endl;
 
 	//initialize
 
@@ -32,8 +24,6 @@ int main() {
 	shared_ptr<neu::Texture> texture = make_shared<neu::Texture>();
 
 	texture->Create(neu::g_renderer, "face.png");
-
-	cout << neu::GetFilePath() << endl;
 
 	bool quit = false;
 

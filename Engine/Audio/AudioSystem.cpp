@@ -1,5 +1,7 @@
 #include "AudioSystem.h"
 
+#include "../Core/Logger.h"
+
 #include <fmod.hpp>
 
 void neu::AudioSystem::Initialize(){
@@ -36,13 +38,17 @@ void neu::AudioSystem::Update(){
 
 void neu::AudioSystem::AddAudio(const std::string& name, const std::string& filename){
 
-	// !! use find() on m_sounds to see if element exists, only set sound if it does not
-
 	if (m_sounds.find(name) == m_sounds.end()){
 
 		FMOD::Sound* sound = nullptr;
 
 		m_fmodSystem->createSound(filename.c_str(), FMOD_DEFAULT, 0, &sound);
+
+		if (sound == nullptr) {
+
+			LOG("Error Creating sound %s. ", filename.c_str());
+
+		}
 		
 		m_sounds[name] = sound;
 	
@@ -52,26 +58,32 @@ void neu::AudioSystem::AddAudio(const std::string& name, const std::string& file
 
 void neu::AudioSystem::PlayAudio(const std::string& name, bool loop){
 
-	auto iter = m_sounds.find(name);// !! use find() on m_sounds and return the iterator 
+	auto iter = m_sounds.find(name);
 		
-		if (iter != m_sounds.end()){
+	if (iter == m_sounds.end()) {
 
-			FMOD::Sound* sound = iter->second;
+		LOG("Error could not find sound %s. ", name.c_str());
+
+	}
+
+	if (iter != m_sounds.end()){
+
+		FMOD::Sound* sound = iter->second;
 		
-			if (loop) {
+		if (loop) {
 
-				sound->setMode(FMOD_LOOP_NORMAL);
+			sound->setMode(FMOD_LOOP_NORMAL);
 
-			}else{
+		}else{
 
-				sound->setMode(FMOD_LOOP_OFF);
+			sound->setMode(FMOD_LOOP_OFF);
 			
-			}
-
-			FMOD::Channel* channel;
-			
-			m_fmodSystem->playSound(sound, 0, false, &channel);
-		
 		}
+
+		FMOD::Channel* channel;
+			
+		m_fmodSystem->playSound(sound, 0, false, &channel);
+		
+	}
 
 }

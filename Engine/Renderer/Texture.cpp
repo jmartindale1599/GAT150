@@ -2,6 +2,8 @@
 
 #include "../Renderer.h" 
 
+#include "../Core/Logger.h"
+
 #include <SDL.h> 
 
 #include <SDL_image.h> 
@@ -24,10 +26,29 @@ namespace neu{
         
         SDL_Surface* surface = IMG_Load(filename.c_str());
 
+        if (surface == nullptr) {
+
+            LOG(SDL_GetError());
+
+            SDL_FreeSurface(surface);
+
+            return false;
+
+        }
+
         m_texture = SDL_CreateTextureFromSurface(renderer.m_renderer, surface);
         
-        SDL_FreeSurface(surface);
+        if (m_texture == nullptr) {
 
+            LOG(SDL_GetError());
+
+            SDL_FreeSurface(surface);
+
+            return false;
+
+        }
+
+        SDL_FreeSurface(surface);
 
         return true;
 
