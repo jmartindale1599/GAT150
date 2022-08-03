@@ -67,6 +67,9 @@
     <ClCompile Include="Audio\AudioSystem.cpp">
       <Filter>Audio</Filter>
     </ClCompile>
+    <ClCompile Include="Renderer\Texture.cpp">
+      <Filter>Renderer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Memory.h">
@@ -125,6 +128,9 @@
     </ClInclude>
     <ClInclude Include="FrameWork\Game.h">
       <Filter>Sources\FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\Texture.h">
+      <Filter>Renderer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

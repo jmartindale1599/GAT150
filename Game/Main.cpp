@@ -11,7 +11,7 @@ int main() {
 
 	kronk::innitMemory();
 
-	neu::SetFilePath("../../Build");
+	neu::SetFilePath("../Assets");
 
 	cout << neu::GetFilePath() << endl;
 
@@ -29,6 +29,12 @@ int main() {
 
 	neu::g_renderer.SetClearColor(neu::Color{ 0, 0, 0, 255 });
 
+	shared_ptr<neu::Texture> texture = make_shared<neu::Texture>();
+
+	texture->Create(neu::g_renderer, "face.png");
+
+	cout << neu::GetFilePath() << endl;
+
 	bool quit = false;
 
 	while (!quit) {
@@ -44,7 +50,10 @@ int main() {
 		if (neu::g_inputSystem.GetKeyDown(neu::key_escape)) quit = true;
 
 		//render
+
 		neu::g_renderer.BeginFrame();
+
+		neu::g_renderer.Draw(texture, { 200, 50 }, 0);
 
 		neu::g_renderer.EndFrame();
 

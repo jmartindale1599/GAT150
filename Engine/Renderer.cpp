@@ -6,6 +6,8 @@
 
 #include <SDL_ttf.h>
 
+#include <SDL_image.h>
+
 namespace neu{
 
 	SDL_Renderer* renderer{ nullptr };
@@ -15,6 +17,8 @@ namespace neu{
 	void Renderer::Initialize(){
 
 		SDL_Init(SDL_INIT_VIDEO);
+		
+		IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG);
 
 		TTF_Init();
 
@@ -54,6 +58,24 @@ namespace neu{
 
 		SDL_RenderPresent(m_renderer);
 		 
+	}
+
+	void Renderer::Draw(std::shared_ptr<Texture> texture, const Vector2& position, float angle){
+
+		Vector2 size = texture->GetSize();
+
+		SDL_Rect dest;
+		
+		dest.x = position.x;
+		
+		dest.y = position.y;
+			
+		dest.w = size.x;
+			
+		dest.h = size.y;
+
+		SDL_RenderCopyEx(m_renderer, texture->m_texture, nullptr, &dest, angle, nullptr, SDL_FLIP_NONE);
+
 	}
 
 	void Renderer::DrawLine(float x1, float y1, float x2, float y2){
