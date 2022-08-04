@@ -12,6 +12,8 @@ struct SDL_Window;
 
 namespace neu {
 
+	struct Transform;
+
 	class Renderer {
 
 	public:
@@ -30,7 +32,9 @@ namespace neu {
 
 		void EndFrame();
 
-		void Draw(std::shared_ptr<Texture> texture, const Vector2& position, float angle = 0);
+		void Draw(std::shared_ptr<Texture> texture, const Vector2& position, float angle = 0, const Vector2& scale = Vector2{ 1,1 }, const Vector2& registration = Vector2{ 0.5f,0.5f });
+		
+		void Draw(std::shared_ptr<Texture> texture, const Transform& transform, const Vector2& registration = Vector2(0.5f, 0.5f));
 
 		void DrawLine(float x1, float y1, float x2, float y2);
 

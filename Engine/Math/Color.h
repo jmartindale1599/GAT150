@@ -4,6 +4,8 @@
 
 #include <iostream>
 
+#include <string>
+
 namespace neu {
 
 	using u8_t = unsigned char;
@@ -20,38 +22,22 @@ namespace neu {
 		
 		uint8_t a;
 
+		static const Color white;
+
+		static const Color black;
+
+		static const Color red;
+
+		static const Color green;
+
+		static const Color blue;
+		
+		static const Color purple;
+
 		friend std::istream& operator >> (std::istream& stream, Color& color);
 
 	};
 
-	inline std::istream& operator >> (std::istream& stream, Color& color) {
-
-		std::string line;
-
-		std::string str;
-
-		std::getline(stream, line);
-
-		//Color things
-
-		str = line.substr(line.find("{") + 1, line.find(",") - line.find("{") -1);
-		
-		color.r = (uint8_t)(std::stof(str)* 255);
-		
-		line = line.substr(line.find(",") + 1);
-
-		str = line.substr(0, line.find(","));
-
-		color.g = (uint8_t)(std::stof(str) * 255);
-
-		str = line.substr(line.find(",") +1, line.find("}") - line.find(",") -1);
-
-		color.b = (uint8_t)(std::stof(str) * 255);
-
-		color.a = 255;
-
-		return stream;
-
-	}
+	std::istream& operator >> (std::istream& stream, Color& color);
 
 }

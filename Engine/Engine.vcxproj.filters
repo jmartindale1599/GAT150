@@ -73,6 +73,12 @@
     <ClCompile Include="Core\Logger.cpp">
       <Filter>Sources\Core</Filter>
     </ClCompile>
+    <ClCompile Include="Math\Vector2.cpp">
+      <Filter>Sources\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Math\Color.cpp">
+      <Filter>Sources\Math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Memory.h">

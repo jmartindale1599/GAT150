@@ -1,6 +1,6 @@
 #include "Renderer.h"
 
-#include "Renderer.h" 
+#include "Math/Transform.h" 
 
 #include <SDL.h>
 
@@ -60,21 +60,55 @@ namespace neu{
 		 
 	}
 
-	void Renderer::Draw(std::shared_ptr<Texture> texture, const Vector2& position, float angle){
+	void Renderer::Draw(std::shared_ptr<Texture> texture, const Vector2& position, float rotation, const Vector2& scale, const Vector2& registration){
 
 		Vector2 size = texture->GetSize();
 
+		size = size * scale;
+
+		Vector2 origin = size * registration;
+
+		Vector2 tposition = position - origin;
+
 		SDL_Rect dest;
 		
-		dest.x = position.x;
+		dest.x = (int)position.x;
 		
-		dest.y = position.y;
+		dest.y = (int)position.y;
 			
-		dest.w = size.x;
+		dest.w = (int)size.x;
 			
-		dest.h = size.y;
+		dest.h = (int)size.y;
 
-		SDL_RenderCopyEx(m_renderer, texture->m_texture, nullptr, &dest, angle, nullptr, SDL_FLIP_NONE);
+		SDL_Point center{ (int)origin.x , (int)origin.y};
+
+		SDL_RenderCopyEx(m_renderer, texture->m_texture, nullptr, &dest, rotation, &center, SDL_FLIP_NONE);
+
+	}
+
+	void Renderer::Draw(std::shared_ptr<Texture> texture, const Transform& transform, const Vector2& registration){
+
+		Vector2 size = texture->GetSize();
+
+		size = size * transform.scale;
+
+		Vector2 origin = size * registration;
+
+		Vector2 tposition = transform.position - origin;
+
+		SDL_Rect dest;
+
+		dest.x = (int)transform.position.x;
+
+		dest.y = (int)transform.position.y;
+
+		dest.w = (int)size.x;
+
+		dest.h = (int)size.y;
+
+		SDL_Point center{ (int)origin.x , (int)origin.y };
+
+		SDL_RenderCopyEx(m_renderer, texture->m_texture, nullptr, &dest, transform.rotation, &center, SDL_FLIP_NONE);
 
 	}
 

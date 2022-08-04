@@ -7,6 +7,10 @@ using namespace std;
 
 int main() {
 
+	kronk::innitMemory();
+
+	neu::SetFilePath("../Assets");
+
 	//initialize
 
 	neu::g_audio.Initialize();
@@ -27,12 +31,22 @@ int main() {
 
 	bool quit = false;
 
+	//cout << __FILE__ << endl; //shows fileepath
+	 
+	//cout << __LINE__ << endl; //shows line
+	
+	//cout << __FUNCTION__ << endl; //shows source name
+
+	float angle = 0;
+
 	while (!quit) {
 
 		//update
 
 		neu::g_time.Tick();
 
+		angle += 90.0f * neu::g_time.deltaTime;
+		
 		neu::g_inputSystem.Update();
 
 		neu::g_audio.Update();
@@ -43,7 +57,7 @@ int main() {
 
 		neu::g_renderer.BeginFrame();
 
-		neu::g_renderer.Draw(texture, { 200, 50 }, 0);
+		neu::g_renderer.Draw(texture, { 200, 50 }, angle, { 2,2 }, { 0.5f,0.5f });
 
 		neu::g_renderer.EndFrame();
 
