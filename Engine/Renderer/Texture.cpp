@@ -1,6 +1,6 @@
 #include "Texture.h" 
 
-#include "../Renderer.h" 
+#include "../Renderer/Renderer.h" 
 
 #include "../Core/Logger.h"
 

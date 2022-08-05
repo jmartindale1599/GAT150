@@ -31,11 +31,25 @@ int main() {
 
 	bool quit = false;
 
-	//cout << __FILE__ << endl; //shows fileepath
-	 
-	//cout << __LINE__ << endl; //shows line
+	//create actor
+
+	neu::Scene scene;
+
+	neu::Transform transform{ {100,100}, 0, {2} };
+
+	std::unique_ptr<neu::Actor> actor = std::make_unique <neu::Actor>(transform);
 	
-	//cout << __FUNCTION__ << endl; //shows source name
+	std::unique_ptr<neu::PlayerComponent> pcomponent = std::make_unique <neu::PlayerComponent>();
+
+	actor->addComponent(std::move(pcomponent));
+
+	std::unique_ptr<neu::SpriteComponent> scomponent = std::make_unique <neu::SpriteComponent>();
+	
+	scomponent->m_texture = texture;
+
+	actor->addComponent(std::move(scomponent));
+
+	scene.Add(std::move(actor));
 
 	float angle = 0;
 
@@ -47,6 +61,8 @@ int main() {
 
 		angle += 90.0f * neu::g_time.deltaTime;
 		
+		scene.Update();
+
 		neu::g_inputSystem.Update();
 
 		neu::g_audio.Update();
@@ -56,6 +72,8 @@ int main() {
 		//render
 
 		neu::g_renderer.BeginFrame();
+
+		scene.Draw(neu::g_renderer);
 
 		neu::g_renderer.Draw(texture, { 200, 50 }, angle, { 2,2 }, { 0.5f,0.5f });
 

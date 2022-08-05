@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Math/Vector2.h"
+#include "../Math/Vector2.h"
 
-#include "Math/Color.h"
+#include "../Math/Color.h"
 
-#include "Renderer/Texture.h"
+#include "../Renderer/Texture.h"
 
 struct SDL_Renderer;
 

@@ -39,7 +39,7 @@ namespace neu {
 
 		std::list<std::unique_ptr<Actor>> m_actors;
 
-		Game* m_game;
+		Game* m_game = nullptr;
 
 	};
 

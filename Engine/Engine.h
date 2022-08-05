@@ -22,7 +22,11 @@
 
 #include "Input/InputSystem.h"
 
-#include "Renderer.h"
+#include "Components/PlayerComponent.h"
+
+#include "Components/SpriteComponent.h"
+
+#include "Renderer/Renderer.h"
 
 #include "Audio/AudioSystem.h"
 

@@ -3,7 +3,7 @@
 
 #include "Font.h" 
 
-#include "../Renderer.h" 
+#include "../Renderer/Renderer.h" 
 
 #include <SDL.h> 
 
