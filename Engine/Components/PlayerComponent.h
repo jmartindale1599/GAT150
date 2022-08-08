@@ -12,6 +12,10 @@ namespace neu {
 
 		void Update() override;
 
+	private:
+
+		int m_speed = 150;
+
 	};
 
 }

@@ -33,6 +33,7 @@ namespace neu {
 		template<typename T> T* GetActor();
 
 		void setGame(Game* game) { m_game = game; }
+
 		Game* getGame() { return m_game; }
 
 	private:

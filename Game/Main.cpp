@@ -35,7 +35,7 @@ int main() {
 
 	neu::Scene scene;
 
-	neu::Transform transform{ {100,100}, 0, {2} };
+	neu::Transform transform{ {100,100}, 0, {1} };
 
 	std::unique_ptr<neu::Actor> actor = std::make_unique <neu::Actor>(transform);
 	
@@ -59,7 +59,7 @@ int main() {
 
 		neu::g_time.Tick();
 
-		angle += 90.0f * neu::g_time.deltaTime;
+		//angle += 90.0f * neu::g_time.deltaTime;
 		
 		scene.Update();
 
@@ -75,7 +75,7 @@ int main() {
 
 		scene.Draw(neu::g_renderer);
 
-		neu::g_renderer.Draw(texture, { 200, 50 }, angle, { 2,2 }, { 0.5f,0.5f });
+		//neu::g_renderer.Draw(texture, { 200, 50 }, angle, { 2,2 }, { 0.5f,0.5f });
 
 		neu::g_renderer.EndFrame();
 
