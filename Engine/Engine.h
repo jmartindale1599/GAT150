@@ -26,6 +26,10 @@
 
 #include "Components/SpriteComponent.h"
 
+#include "Components/AudioComponent.h"
+
+#include "Components/PhysicsComponent.h"
+
 #include "Renderer/Renderer.h"
 
 #include "Audio/AudioSystem.h"

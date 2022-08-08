@@ -27,7 +27,11 @@ int main() {
 
 	shared_ptr<neu::Texture> texture = make_shared<neu::Texture>();
 
-	texture->Create(neu::g_renderer, "face.png");
+	texture->Create(neu::g_renderer, "sprites/Russle.png");
+
+	neu::g_audio.AddAudio("music","audio/emotional-disappointed.wav");
+	
+	neu::g_audio.AddAudio("lazar","audio/Lazer.wav");
 
 	bool quit = false;
 
@@ -35,7 +39,7 @@ int main() {
 
 	neu::Scene scene;
 
-	neu::Transform transform{ {100,100}, 0, {1} };
+	neu::Transform transform{ {400,300}, 0, {1.5} };
 
 	std::unique_ptr<neu::Actor> actor = std::make_unique <neu::Actor>(transform);
 	
@@ -45,6 +49,16 @@ int main() {
 
 	std::unique_ptr<neu::SpriteComponent> scomponent = std::make_unique <neu::SpriteComponent>();
 	
+	std::unique_ptr<neu::AudioComponent> acomponent = std::make_unique <neu::AudioComponent>();
+
+	std::unique_ptr<neu::PhysicsComponent> phcomponent = std::make_unique <neu::PhysicsComponent>();
+
+	acomponent->m_soundName = "lazar";
+	
+	actor->addComponent(std::move(acomponent));
+
+	actor->addComponent(std::move(phcomponent));
+
 	scomponent->m_texture = texture;
 
 	actor->addComponent(std::move(scomponent));
@@ -59,8 +73,6 @@ int main() {
 
 		neu::g_time.Tick();
 
-		//angle += 90.0f * neu::g_time.deltaTime;
-		
 		scene.Update();
 
 		neu::g_inputSystem.Update();
@@ -74,8 +86,6 @@ int main() {
 		neu::g_renderer.BeginFrame();
 
 		scene.Draw(neu::g_renderer);
-
-		//neu::g_renderer.Draw(texture, { 200, 50 }, angle, { 2,2 }, { 0.5f,0.5f });
 
 		neu::g_renderer.EndFrame();
 

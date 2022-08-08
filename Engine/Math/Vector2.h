@@ -128,7 +128,7 @@ namespace neu {
 
 		float length = Legnth();
 
-		return Vector2( x / length, y / length);
+		return (length == 0) ? Vector2{ 0,0 } : Vector2(x / length, y / length);
 
 	}
 

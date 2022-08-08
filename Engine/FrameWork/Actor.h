@@ -37,6 +37,11 @@ namespace neu {
 		friend class Scene;
 
 		Transform m_transform;
+
+		template<typename T>
+
+		T* GetComponent();
+
 	protected:
 
 		std::string m_tag;
@@ -53,6 +58,22 @@ namespace neu {
 		std::vector<std::unique_ptr<Component>> m_components;
 
 	};
+
+	template<typename T>
+
+	inline T* Actor::GetComponent() {
+
+		for (auto& component : m_components) {
+
+			T* result = dynamic_cast<T*>(component.get());
+
+			if (result) return result;
+
+		}
+
+		return nullptr;
+
+	}
 
 }
 
