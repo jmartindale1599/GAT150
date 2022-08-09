@@ -22,6 +22,10 @@ namespace neu {
 
 		void Set(float x, float y) { this->x = x; this->y = y; }
 
+		float operator [] (size_t index) const { return (&x)[index]; }
+
+		float& operator [] (size_t index) { return (&x)[index]; }
+
 		//arithmatic operators
 
 		//Vector2 = Vector2 + Vector2

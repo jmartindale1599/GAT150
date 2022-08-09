@@ -94,6 +94,9 @@
     <ClCompile Include="Components\PhysicsComponent.cpp">
       <Filter>Sources\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Math\2X2.cpp">
+      <Filter>Sources\Math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Memory.h">
@@ -176,6 +179,12 @@
     </ClInclude>
     <ClInclude Include="Components\PhysicsComponent.h">
       <Filter>Sources\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\2X2.h">
+      <Filter>Sources\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Vector3.h">
+      <Filter>Sources\Math</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
