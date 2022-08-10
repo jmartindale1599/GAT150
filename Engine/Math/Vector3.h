@@ -92,8 +92,6 @@ namespace neu {
 
 		void Normalize();
 
-
-
 	};
 
 	inline float Vector3::LegnthSquare(){
