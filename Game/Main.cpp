@@ -25,17 +25,23 @@ int main() {
 
 	neu::g_renderer.SetClearColor(neu::Color{ 0, 0, 0, 255 });
 
+	//losad assets
+
 	shared_ptr<neu::Texture> texture = make_shared<neu::Texture>();
 
+	shared_ptr<neu::Model> model = make_shared<neu::Model>();
+
 	texture->Create(neu::g_renderer, "sprites/Russle.png");
+
+	model->Create("models/Model.txt");
 
 	neu::g_audio.AddAudio("music","audio/emotional-disappointed.wav");
 	
 	neu::g_audio.AddAudio("lazar","audio/Lazer.wav");
 
-	bool quit = false;
-
 	//create actor
+
+	bool quit = false;
 
 	neu::Scene scene;
 
@@ -47,7 +53,17 @@ int main() {
 
 	actor->addComponent(std::move(pcomponent));
 
-	std::unique_ptr<neu::SpriteComponent> scomponent = std::make_unique <neu::SpriteComponent>();
+	std::unique_ptr<neu::ModelComponent> mcomponent = std::make_unique <neu::ModelComponent>();
+
+	mcomponent->m_model = model;
+
+	actor->addComponent(std::move(mcomponent));
+
+	//std::unique_ptr<neu::SpriteComponent> scomponent = std::make_unique <neu::SpriteComponent>();
+	
+	//scomponent->m_texture = texture;
+
+	//actor->addComponent(std::move(scomponent));
 	
 	std::unique_ptr<neu::AudioComponent> acomponent = std::make_unique <neu::AudioComponent>();
 
@@ -59,9 +75,19 @@ int main() {
 
 	actor->addComponent(std::move(phcomponent));
 
-	scomponent->m_texture = texture;
+	//child actor
 
-	actor->addComponent(std::move(scomponent));
+	neu::Transform transformC{ {10,5}, 0, {1, 1} };
+
+	std::unique_ptr<neu::Actor> child = std::make_unique <neu::Actor>(transformC);
+	
+	std::unique_ptr<neu::ModelComponent> mcomponentC = std::make_unique <neu::ModelComponent>();
+
+	mcomponentC->m_model = model;
+
+	child->addComponent(std::move(mcomponentC));
+
+	actor->addChild(std::move(child));
 
 	scene.Add(std::move(actor));
 
@@ -82,6 +108,8 @@ int main() {
 		if (neu::g_inputSystem.GetKeyDown(neu::key_escape)) quit = true;
 
 		//render
+
+		angle += 360.0f * neu::g_time.deltaTime;
 
 		neu::g_renderer.BeginFrame();
 

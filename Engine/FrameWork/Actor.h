@@ -24,6 +24,8 @@ namespace neu {
 
 		virtual void Draw(Renderer& renderer);
 
+		void addChild(std::unique_ptr<Actor> child);
+
 		void addComponent(std::unique_ptr<Component> component);
 
 		virtual void onCollision(Actor* other) {}
@@ -50,12 +52,15 @@ namespace neu {
 
 		Vector2 m_velocity;
 
-
 		float m_damping = 1;
 
-		Scene* m_scene;
+		Scene* m_scene = nullptr;
+
+		Actor* m_parent = nullptr;
 
 		std::vector<std::unique_ptr<Component>> m_components;
+
+		std::vector<std::unique_ptr<Actor>> m_children;
 
 	};
 

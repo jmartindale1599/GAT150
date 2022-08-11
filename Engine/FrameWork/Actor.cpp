@@ -10,6 +10,22 @@ void neu::Actor::Update(){
 
 	}
 
+	for (auto& child : m_children) {
+
+		child->Update();
+
+	}
+
+	if (m_parent) {
+
+		m_transform.Update(m_parent->m_transform.matrix);
+
+	}else {
+
+		m_transform.Update();
+
+	}
+
 }
 
 void neu::Actor::Draw(Renderer& renderer){
@@ -27,6 +43,22 @@ void neu::Actor::Draw(Renderer& renderer){
 		//component->Update();
 
 	}
+
+	for (auto& child : m_children) {
+
+		child->Draw(renderer);
+
+	}
+
+}
+
+void neu::Actor::addChild(std::unique_ptr<Actor> child){
+	
+	child->m_parent = this;
+
+	child->m_scene = this->m_scene;
+
+	m_children.push_back(std::move(child));
 
 }
 

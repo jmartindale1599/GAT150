@@ -4,9 +4,7 @@
 
 namespace neu {
 
-	class Texture;
-
-	class Renderer;
+	class Model;
 
 	class ModelComponent : public RenderComponent {
 
@@ -16,7 +14,7 @@ namespace neu {
 
 		virtual void Draw(Renderer& renderer) override;
 
-		std::shared_ptr<Texture> m_texture;
+		std::shared_ptr<Model> m_model;
 
 	};
 

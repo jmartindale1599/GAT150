@@ -30,6 +30,8 @@
 
 #include "Components/PhysicsComponent.h"
 
+#include "Components/ModelComponent.h"
+
 #include "Renderer/Renderer.h"
 
 #include "Audio/AudioSystem.h"

@@ -100,6 +100,9 @@
     <ClCompile Include="Math\3X3.cpp">
       <Filter>Sources\Math</Filter>
     </ClCompile>
+    <ClCompile Include="Components\ModelComponent.cpp">
+      <Filter>Sources\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Memory.h">
