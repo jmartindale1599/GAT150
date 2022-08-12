@@ -13,4 +13,6 @@ namespace neu {
 
 	AudioSystem g_audio;
 
+	ResourceManager g_resources;
+
 }

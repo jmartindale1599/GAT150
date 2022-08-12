@@ -36,6 +36,8 @@
 
 #include "Audio/AudioSystem.h"
 
+#include "Resource/ResourceMagager.h"
+
 #include <memory>
 
 #include <iostream>
@@ -56,6 +58,8 @@ namespace neu {
 	extern Scene g_scene;
 
 	extern AudioSystem g_audio;
+
+	extern ResourceManager g_resources;
 
 }
 

@@ -1,12 +1,16 @@
 #pragma once
 
+#include "../Resource/Resource.h"
+
 #include <string>
 
 struct _TTF_Font;
 
+//"Make a resource"
+
 namespace neu{
 
-	class Font{
+	class Font : public Resource{
 
 	public:
 		
@@ -15,6 +19,8 @@ namespace neu{
 		Font(const std::string& filename, int fontSize);
 		
 		~Font();
+
+		bool Create(const std::string& filename, void* data = nullptr) override { return false; }
 
 		void Load(const std::string& filename, int fontSize);
 

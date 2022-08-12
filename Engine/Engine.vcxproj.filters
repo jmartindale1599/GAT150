@@ -29,6 +29,9 @@
     <Filter Include="Sources\Components">
       <UniqueIdentifier>{38ffdcf1-7dbe-491e-9f27-1e25fc59ace7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Resource">
+      <UniqueIdentifier>{7c00943f-91d2-4dfe-97ea-635b0e3d93aa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\Memory.cpp">
@@ -102,6 +105,9 @@
     </ClCompile>
     <ClCompile Include="Components\ModelComponent.cpp">
       <Filter>Sources\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource\ResourceMagager.cpp">
+      <Filter>Sources\Resource</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -197,6 +203,12 @@
     </ClInclude>
     <ClInclude Include="Components\ModelComponent.h">
       <Filter>Sources\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource\Resource.h">
+      <Filter>Sources\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource\ResourceMagager.h">
+      <Filter>Sources\Resource</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

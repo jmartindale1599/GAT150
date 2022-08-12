@@ -20,6 +20,20 @@ namespace neu{
     
     }
 
+    bool Texture::Create(const std::string& filename, void* data){
+
+        //check if data is not null
+
+
+
+        Renderer* renderer = static_cast<Renderer*>(data);
+
+        Create(*renderer, filename);
+
+        return false;
+    
+    }
+
     bool Texture::Create(Renderer& renderer, const std::string& filename){
 
         // load surface 

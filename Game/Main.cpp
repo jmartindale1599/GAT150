@@ -19,21 +19,25 @@ int main() {
 
 	neu::g_inputSystem.Initialize();
 
+	neu::g_resources.initialize();
+
 	//create window
 
 	neu::g_renderer.CreateWindow("Neumont", 800, 600);
 
 	neu::g_renderer.SetClearColor(neu::Color{ 0, 0, 0, 255 });
 
-	//losad assets
+	//load assets
 
-	shared_ptr<neu::Texture> texture = make_shared<neu::Texture>();
+	//shared_ptr<neu::Texture> texture = make_shared<neu::Texture>();
 
-	shared_ptr<neu::Model> model = make_shared<neu::Model>();
+	//texture->Create(neu::g_renderer, "sprites/Russle.png");
 
-	texture->Create(neu::g_renderer, "sprites/Russle.png");
+	//shared_ptr<neu::Model> model = make_shared<neu::Model>();
 
-	model->Create("models/Model.txt");
+	//model->Create("models/Model.txt");
+
+	std::shared_ptr<neu::Texture> texture = neu::g_resources.Get<neu::Texture>("sprites/Russle.png",&neu::g_renderer);
 
 	neu::g_audio.AddAudio("music","audio/emotional-disappointed.wav");
 	
@@ -55,7 +59,7 @@ int main() {
 
 	std::unique_ptr<neu::ModelComponent> mcomponent = std::make_unique <neu::ModelComponent>();
 
-	mcomponent->m_model = model;
+	mcomponent->m_model = neu::g_resources.Get<neu::Model>("models/Model.txt");;
 
 	actor->addComponent(std::move(mcomponent));
 
@@ -83,7 +87,7 @@ int main() {
 	
 	std::unique_ptr<neu::ModelComponent> mcomponentC = std::make_unique <neu::ModelComponent>();
 
-	mcomponentC->m_model = model;
+	mcomponentC->m_model = neu::g_resources.Get<neu::Model>("models/Model.txt");;
 
 	child->addComponent(std::move(mcomponentC));
 

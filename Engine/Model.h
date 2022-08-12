@@ -2,13 +2,15 @@
 
 #include "Renderer/Renderer.h"
 
+#include "Resource/Resource.h"
+
 #include <string>
 
 #include <vector>
 
 namespace neu {
 
-	class Model {
+	class Model : public Resource {
 
 	public:
 	
@@ -18,7 +20,7 @@ namespace neu {
 
 		Model(const std::string filename);
 
-		bool Create(const std::string& filename);
+		bool Create(const std::string& filename, void* data) override;
 
 		void Draw(Renderer& reference, const Vector2& position, float angle, float scale);
 
