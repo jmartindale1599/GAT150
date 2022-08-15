@@ -1,13 +1,15 @@
 #include "ResourceMagager.h"
 
-void neu::ResourceManager::initialize(){
+using namespace neu;
+
+	void ResourceManager::initialize() {
 
 
 
-}
+	}
 
-void neu::ResourceManager::shutDown(){
+	void ResourceManager::shutDown() {
 
+		m_library.clear();
 
-
-}
+	}

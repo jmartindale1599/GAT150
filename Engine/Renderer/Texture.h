@@ -20,8 +20,8 @@ namespace neu{
 
 		~Texture();
 
-		bool Create(const std::string& filename, void* data = nullptr) override;
-
+		bool Create(const std::string& filename, int data) override;
+		 
 		bool Create(Renderer& renderer, const std::string& filename);
 
 		Vector2 GetSize() const;

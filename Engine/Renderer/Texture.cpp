@@ -20,18 +20,18 @@ namespace neu{
     
     }
 
-    bool Texture::Create(const std::string& filename, void* data){
+    bool Texture::Create(std::string filename, ...){
+     
+        va_list args;
+       
+        va_start(args, filename);
+     
+        Renderer& renderer = va_arg(args, Renderer);
 
-        //check if data is not null
+        va_end(args);
+       
+        return Create(renderer, filename);
 
-
-
-        Renderer* renderer = static_cast<Renderer*>(data);
-
-        Create(*renderer, filename);
-
-        return false;
-    
     }
 
     bool Texture::Create(Renderer& renderer, const std::string& filename){

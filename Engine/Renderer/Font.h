@@ -6,8 +6,6 @@
 
 struct _TTF_Font;
 
-//"Make a resource"
-
 namespace neu{
 
 	class Font : public Resource{
@@ -20,7 +18,7 @@ namespace neu{
 		
 		~Font();
 
-		bool Create(const std::string& filename, void* data = nullptr) override { return false; }
+		bool Create(const std::string& filename, void* data = nullptr) override;
 
 		void Load(const std::string& filename, int fontSize);
 

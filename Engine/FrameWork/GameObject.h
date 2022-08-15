@@ -2,6 +2,8 @@
 
 #include "../Math/Transform.h"
 
+#define REGISTER_CLASS(class) Factory::Instance().Register<class>(#class);
+
 namespace neu {
 
 	class GameObject {

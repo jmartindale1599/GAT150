@@ -21,6 +21,8 @@ int main() {
 
 	neu::g_resources.initialize();
 
+	neu::Engine::Instance().Register();
+
 	//create window
 
 	neu::g_renderer.CreateWindow("Neumont", 800, 600);
@@ -30,14 +32,12 @@ int main() {
 	//load assets
 
 	//shared_ptr<neu::Texture> texture = make_shared<neu::Texture>();
-
+	
 	//texture->Create(neu::g_renderer, "sprites/Russle.png");
 
 	//shared_ptr<neu::Model> model = make_shared<neu::Model>();
 
 	//model->Create("models/Model.txt");
-
-	std::shared_ptr<neu::Texture> texture = neu::g_resources.Get<neu::Texture>("sprites/Russle.png",&neu::g_renderer);
 
 	neu::g_audio.AddAudio("music","audio/emotional-disappointed.wav");
 	
@@ -51,15 +51,23 @@ int main() {
 
 	neu::Transform transform{ {400,300}, 0, {1.5} };
 
-	std::unique_ptr<neu::Actor> actor = std::make_unique <neu::Actor>(transform);
+	//std::unique_ptr<neu::Actor> actor = std::make_unique <neu::Actor>(transform);
 	
-	std::unique_ptr<neu::PlayerComponent> pcomponent = std::make_unique <neu::PlayerComponent>();
+	std::unique_ptr<neu::Actor> actor = neu::Factory::Instance().Create<neu::Actor>("Actor");
+
+	actor->m_transform = transform;
+
+	std::unique_ptr<neu::Component> pcomponent = neu::Factory::Instance().Create<neu::Component>("PlayerComponent");
 
 	actor->addComponent(std::move(pcomponent));
 
 	std::unique_ptr<neu::ModelComponent> mcomponent = std::make_unique <neu::ModelComponent>();
 
-	mcomponent->m_model = neu::g_resources.Get<neu::Model>("models/Model.txt");;
+	std::shared_ptr<neu::Texture> texture = neu::g_resources.Get<neu::Texture>("sprites/Russle.png", &neu::g_renderer);
+
+	auto font = neu::g_resources.Get<neu::Font>("fonts/rb2.ttf", 10);
+
+	//mcomponent->m_model = neu::g_resources.Get<neu::Model>("models/model.txt");
 
 	actor->addComponent(std::move(mcomponent));
 
@@ -71,7 +79,7 @@ int main() {
 	
 	std::unique_ptr<neu::AudioComponent> acomponent = std::make_unique <neu::AudioComponent>();
 
-	std::unique_ptr<neu::PhysicsComponent> phcomponent = std::make_unique <neu::PhysicsComponent>();
+	std::unique_ptr<neu::Component> phcomponent = neu::Factory::Instance().Create<neu::Component>("PhysicsComponent");
 
 	acomponent->m_soundName = "lazar";
 	

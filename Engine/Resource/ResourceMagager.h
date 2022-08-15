@@ -10,10 +10,9 @@
 
 namespace neu {
 
-	class ResourceManager {
-
+	class ResourceManager
+	{
 	public:
-
 		ResourceManager() = default;
 
 		~ResourceManager() = default;
@@ -22,9 +21,9 @@ namespace neu {
 
 		void shutDown();
 
-		template<typename T>
+		template <typename T, typename ... TArgs>
 
-		std::shared_ptr<T> Get(const std::string& pathname, void* data = nullptr);
+		std::shared_ptr<T> Get(const std::string& name, TArgs... args);
 
 	private:
 
@@ -32,31 +31,29 @@ namespace neu {
 
 	};
 
-	template<typename T>
+	template<typename T, typename ... TArgs>
 
-	inline std::shared_ptr<T> ResourceManager::Get(const std::string& pathname, void* data) {
+	inline std::shared_ptr<T> ResourceManager::Get(const std::string& name, TArgs... args){
 
-		if (m_library.find(pathname) != m_library.end()){
+		if (m_library.find(name) != m_library.end()){
 
-		//found
+			// found 
 
-		return std::dynamic_pointer_cast<T> (m_library[pathname]);
+			return std::dynamic_pointer_cast<T>(m_library[name]);
 
-		}else {
+		}else{
 
-			//not found
+			// not found, create resource and enter into resources 
 
 			std::shared_ptr<T> resource = std::make_shared<T>();
 
-			resource->Create(pathname, data);
+			resource->Create(name, args...);
 
-			m_library[pathname] = resource;
+			m_library[name] = resource;
 
 			return resource;
 
 		}
-
-		return std::shared_ptr<T>();
 
 	}
 

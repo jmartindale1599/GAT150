@@ -210,5 +210,11 @@
     <ClInclude Include="Resource\ResourceMagager.h">
       <Filter>Sources\Resource</Filter>
     </ClInclude>
+    <ClInclude Include="FrameWork\Singleton.h">
+      <Filter>Sources\FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="FrameWork\Factory.h">
+      <Filter>Sources\FrameWork</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

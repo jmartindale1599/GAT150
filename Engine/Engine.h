@@ -14,6 +14,10 @@
 
 #include "FrameWork/Game.h"
 
+#include "FrameWork/Singleton.h"
+
+#include "FrameWork/Factory.h"
+
 #include "Renderer/Font.h"
 
 #include "Renderer/Text.h"
@@ -60,6 +64,14 @@ namespace neu {
 	extern AudioSystem g_audio;
 
 	extern ResourceManager g_resources;
+
+	class Engine : public Singleton<Engine> {
+
+	public:
+
+		void Register();
+
+	};
 
 }
 
