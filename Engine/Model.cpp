@@ -20,14 +20,13 @@ namespace neu {
 
 	}
 
-	bool Model::Create(const std::string& filename, void* data){
+	bool Model::Create(std::string filename, ...){
 
 		if (!Load(filename)) {
 
 			LOG("Error could not read file %s", filename.c_str());
 
 			return false;
-
 		}
 
 		return true;

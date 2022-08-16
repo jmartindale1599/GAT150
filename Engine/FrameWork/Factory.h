@@ -22,7 +22,7 @@ namespace neu {
 
 	template <typename T>
 
-	class Creator : CreatorBase {
+	class Creator : public CreatorBase {
 
 		std::unique_ptr<GameObject> Create() override {
 

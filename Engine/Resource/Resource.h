@@ -8,7 +8,7 @@ namespace neu {
 
 	public:
 
-		virtual bool Create(const std::string& pathname, void* data = nullptr) = 0;
+		virtual bool Create(std::string name, ...) = 0;
 
 	};
 

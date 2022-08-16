@@ -11,6 +11,54 @@ int main() {
 
 	neu::SetFilePath("../Assets");
 
+	rapidjson::Document document;
+
+	bool success = neu::json::Load("json.txt", document);
+
+	assert(success);
+
+	std::string str;
+
+	neu::json::Get(document, "string", str);
+
+	std::cout << str << std::endl;
+
+	bool b;
+
+	neu::json::Get(document, "boolean", b);
+
+	std::cout << b << std::endl;
+
+	int i1;
+
+	neu::json::Get(document, "integer1", i1);
+
+	std::cout << i1 << std::endl;
+
+	int i2;
+
+	neu::json::Get(document, "integer2", i2);
+
+	std::cout << i2 << std::endl;
+
+	float f;
+
+	neu::json::Get(document, "float", f);
+
+	std::cout << f << std::endl;
+
+	neu::Vector2 v2;
+
+	neu::json::Get(document, "vector2", v2);
+
+	std::cout << v2 << std::endl;
+
+	neu::Color color;
+
+	neu::json::Get(document, "color", color);
+
+	std::cout << color << std::endl;
+
 	//initialize
 
 	neu::g_audio.Initialize();
@@ -65,9 +113,9 @@ int main() {
 
 	std::shared_ptr<neu::Texture> texture = neu::g_resources.Get<neu::Texture>("sprites/Russle.png", &neu::g_renderer);
 
-	auto font = neu::g_resources.Get<neu::Font>("fonts/rb2.ttf", 10);
+	//auto font = neu::g_resources.Get<neu::Font>("fonts/rb2.ttf", 10);
 
-	//mcomponent->m_model = neu::g_resources.Get<neu::Model>("models/model.txt");
+	mcomponent->m_model = neu::g_resources.Get<neu::Model>("models/model.txt");
 
 	actor->addComponent(std::move(mcomponent));
 

@@ -114,6 +114,8 @@ namespace neu {
 
 	std::istream& operator >> (std::istream& stream, Vector2& v); 
 
+	std::ostream& operator << (std::ostream& stream, const Vector2& v);
+
 	inline float Vector2::LegnthSquare() { return x * x + y * y; }
 
 	inline float Vector2::Legnth() { return std::sqrt(x * x + y * y); }

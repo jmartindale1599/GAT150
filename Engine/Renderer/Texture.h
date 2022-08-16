@@ -20,7 +20,7 @@ namespace neu{
 
 		~Texture();
 
-		bool Create(const std::string& filename, int data) override;
+		bool Create(std::string filename, ...) override;
 		 
 		bool Create(Renderer& renderer, const std::string& filename);
 

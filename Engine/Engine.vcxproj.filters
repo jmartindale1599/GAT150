@@ -32,6 +32,9 @@
     <Filter Include="Sources\Resource">
       <UniqueIdentifier>{7c00943f-91d2-4dfe-97ea-635b0e3d93aa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Serialization">
+      <UniqueIdentifier>{09983e2a-e976-407c-b93b-a6e949ccfeb2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\Memory.cpp">
@@ -108,6 +111,9 @@
     </ClCompile>
     <ClCompile Include="Resource\ResourceMagager.cpp">
       <Filter>Sources\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Serialization\Json.cpp">
+      <Filter>Serialization</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -215,6 +221,12 @@
     </ClInclude>
     <ClInclude Include="FrameWork\Factory.h">
       <Filter>Sources\FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="Serialization\Json.h">
+      <Filter>Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="Serialization\ISerialisable.h">
+      <Filter>Serialization</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
