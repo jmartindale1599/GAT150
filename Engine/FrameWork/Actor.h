@@ -14,7 +14,7 @@ namespace neu {
 
 	class Renderer;
 
-	class Actor : public GameObject {
+	class Actor : public GameObject, public ISerializable {
 
 	public:
 
@@ -34,7 +34,13 @@ namespace neu {
 
 		float GetRadius() { return 0; } //m_model.getRadius()* m_transform.scale; }
 
-		std::string& getTag() { return m_tag; }
+		const std::string& getTag() { return tag; }
+
+		void GetTag(const std::string& tag) { this->tag = tag; }
+
+		const std::string& getName() { return name; }
+
+		void GetName(const std::string& name) { this->name = name; }
 
 		Scene* scene;
 
@@ -45,10 +51,16 @@ namespace neu {
 		template<typename T>
 
 		T* GetComponent();
+		
+		virtual bool Write(const rapidjson::Value& value) const override;
+
+		virtual bool Read(const rapidjson::Value& value) override;
 
 	protected:
 
-		std::string m_tag;
+		std::string tag;
+
+		std::string name;
 
 		bool m_destroy = false;
 

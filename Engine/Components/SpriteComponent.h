@@ -18,6 +18,10 @@ namespace neu {
 
 		std::shared_ptr<Texture> m_texture;
 
+		virtual bool Write(const rapidjson::Value& value) const override;
+
+		virtual bool Read(const rapidjson::Value& value) override;
+
 	};
 
 }

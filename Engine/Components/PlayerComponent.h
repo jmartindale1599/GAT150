@@ -12,9 +12,11 @@ namespace neu {
 
 		void Update() override;
 
-	private:
+		virtual bool Write(const rapidjson::Value& value) const override;
 
-		int m_speed = 150;
+		virtual bool Read(const rapidjson::Value& value) override;
+
+		float m_speed = 150;
 
 	};
 

@@ -26,6 +26,10 @@ namespace neu {
 
 		float m_pitch = 1;
 
+		virtual bool Write(const rapidjson::Value& value) const override;
+
+		virtual bool Read(const rapidjson::Value& value) override;
+
 	};
 
 }

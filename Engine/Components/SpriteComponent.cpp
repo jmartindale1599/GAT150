@@ -15,3 +15,15 @@ void neu::SpriteComponent::Draw(Renderer& renderer){
 	renderer.Draw(m_texture, m_owner->m_transform);
 
 }
+
+bool neu::SpriteComponent::Write(const rapidjson::Value& value) const{
+
+	return false;
+
+}
+
+bool neu::SpriteComponent::Read(const rapidjson::Value& value){
+
+	return false;
+
+}

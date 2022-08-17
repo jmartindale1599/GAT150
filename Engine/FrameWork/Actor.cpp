@@ -1,5 +1,7 @@
 #include "Actor.h"
 
+#include "Factory.h"
+
 #include "../Components/RenderComponent.h"
 
 void neu::Actor::Update(){
@@ -67,5 +69,49 @@ void neu::Actor::addComponent(std::unique_ptr<Component> component){
 	component->m_owner = this;
 
 	m_components.push_back(std::move(component));
+
+}
+
+bool neu::Actor::Write(const rapidjson::Value& value) const{
+
+
+
+	return true;
+
+}
+
+bool neu::Actor::Read(const rapidjson::Value& value){
+
+	READ_DATA(value, tag);
+
+	READ_DATA(value, name);
+
+	m_transform.Read(value["transform"]);
+
+	if (!value.HasMember("components") || !value["components"].IsArray()) {
+
+		for (auto& componentValue : value["components"].GetArray()) {
+
+			std::string type;
+
+			READ_DATA(componentValue, type);
+
+			auto component = Factory::Instance().Create<Component>(type);
+
+			if (component) {
+
+				component->Read(componentValue);
+
+				addComponent(std::move(component));
+
+			}
+
+		}
+
+	}
+
+
+
+	return true;
 
 }

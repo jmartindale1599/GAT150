@@ -13,17 +13,9 @@ void neu::PlayerComponent::Update(){
 
 	if (neu::g_inputSystem.GetKeyDown(neu::key_w)) {
 
-		thrust = 150;
-
-		//m_owner->m_transform.position.y -= m_speed * neu::g_time.deltaTime;
+		thrust = m_speed;
 
 	}
-
-	//if (neu::g_inputSystem.GetKeyDown(neu::key_s)) {
-
-	//	m_owner->m_transform.rotation += m_speed * neu::g_time.deltaTime;
-
-	//}
 
 	if (neu::g_inputSystem.GetKeyDown(neu::key_a)) {
 
@@ -66,5 +58,19 @@ void neu::PlayerComponent::Update(){
 		}
 
 	}
+
+}
+
+bool neu::PlayerComponent::Write(const rapidjson::Value& value) const{
+
+	return false;
+
+}
+
+bool neu::PlayerComponent::Read(const rapidjson::Value& value){
+
+	READ_DATA(value, m_speed);
+
+	return true;
 
 }

@@ -8,9 +8,11 @@
 
 #include "MathUtils.h"
 
+#include "../Serialization/ISerialisable.h"
+
 namespace neu {
 
-	struct Transform {
+	struct Transform : public ISerializable {
 
 		Vector2 position;
 
@@ -19,6 +21,10 @@ namespace neu {
 		Vector2 scale{ 1, 1 };
 
 		Matrix3x3 matrix;
+
+		virtual bool Write(const rapidjson::Value& value) const override;
+
+		virtual bool Read(const rapidjson::Value& value) override;
 
 		void Update() {
 

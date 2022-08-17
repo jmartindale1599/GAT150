@@ -37,6 +37,7 @@
     <ClCompile Include="Math\3X3.cpp" />
     <ClCompile Include="Math\Color.cpp" />
     <ClCompile Include="Math\MathUtils.cpp" />
+    <ClCompile Include="Math\Transform.cpp" />
     <ClCompile Include="Math\Vector2.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="Renderer\Font.cpp" />

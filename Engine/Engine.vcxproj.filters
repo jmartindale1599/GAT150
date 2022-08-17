@@ -115,6 +115,9 @@
     <ClCompile Include="Serialization\Json.cpp">
       <Filter>Serialization</Filter>
     </ClCompile>
+    <ClCompile Include="Math\Transform.cpp">
+      <Filter>Sources\Math</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Memory.h">
