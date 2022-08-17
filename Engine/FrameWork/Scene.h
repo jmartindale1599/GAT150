@@ -10,11 +10,13 @@ namespace neu {
 	
 	//forward declaration
 
+	class Actor;
+
 	class Renderer;
 
 	class Game;
 
-	class Scene {
+	class Scene : public ISerializable{
 
 	public:
 
@@ -41,6 +43,10 @@ namespace neu {
 		std::list<std::unique_ptr<Actor>> m_actors;
 
 		Game* m_game = nullptr;
+
+		virtual bool Write(const rapidjson::Value& value) const override;
+
+		virtual bool Read(const rapidjson::Value& value) override;
 
 	};
 

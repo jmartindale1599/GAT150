@@ -2,6 +2,8 @@
 
 #include "../Framework/GameObject.h"
 
+#include "../Math/Transform.h"
+
 #include "Component.h"
 
 #include <vector>
