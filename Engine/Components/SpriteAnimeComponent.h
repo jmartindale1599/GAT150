@@ -10,7 +10,7 @@ namespace neu {
 
 	class Renderer;
 
-	class SpriteComponent : public RenderComponent {
+	class SpriteAnimeComponent : public RenderComponent {
 
 	public:
 
@@ -21,6 +21,21 @@ namespace neu {
 		virtual bool Write(const rapidjson::Value& value) const override;
 
 		virtual bool Read(const rapidjson::Value& value) override;
+
+		float fps = 0;
+
+		int num_colums = 0;
+
+		int num_rows = 0;
+
+		int startFrame = 0;
+
+		int endFrame = 0;
+
+
+		int frame = 0;
+
+		float frameTimer = 0;
 
 		Rect source;
 

@@ -38,6 +38,8 @@
 
 #include "Components/ModelComponent.h"
 
+#include "Components/SpriteAnimeComponent.h"
+
 #include "Renderer/Renderer.h"
 
 #include "Audio/AudioSystem.h"

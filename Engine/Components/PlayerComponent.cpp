@@ -41,9 +41,9 @@ void neu::PlayerComponent::Update(){
 
 		//center grav force
 
-		force = (Vector2{ 400,300 } - m_owner->m_transform.position).Normalized() * 60.0f;
+		//force = (Vector2{ 400,300 } - m_owner->m_transform.position).Normalized() * 60.0f;
 
-		component->ApplyForce(force);
+		//component->ApplyForce(force);
 
 	}
 

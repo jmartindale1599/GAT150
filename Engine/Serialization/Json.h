@@ -4,17 +4,15 @@
 
 #include <string>
 
-#define READ_DATA(value, data) neu::json::Get(value, #data, data);
+#define READ_DATA(value, data) neu::json::Get(value, #data, data)
 
 namespace neu{
 
 	struct Vector2;
-	
+
 	struct Color;
 
-}
-
-namespace neu{
+	struct Rect;
 
 	namespace json {
 
@@ -31,6 +29,8 @@ namespace neu{
 		bool Get(const rapidjson::Value& value, const std::string& name, Vector2& data);
 
 		bool Get(const rapidjson::Value& value, const std::string& name, Color& data);
+
+		bool Get(const rapidjson::Value& value, const std::string& name, Rect& data);
 
 	}
 }

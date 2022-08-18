@@ -43,10 +43,10 @@ namespace neu {
 		virtual bool Read(const rapidjson::Value& value) override;
 	
 	private:
+		
+		Game* m_game = nullptr;
 
 		std::list<std::unique_ptr<Actor>> m_actors;
-
-		Game* m_game = nullptr;
 
 	};
 

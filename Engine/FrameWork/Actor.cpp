@@ -88,7 +88,7 @@ bool neu::Actor::Read(const rapidjson::Value& value){
 
 	m_transform.Read(value["transform"]);
 
-	if (!value.HasMember("components") || !value["components"].IsArray()) {
+	if (value.HasMember("components") && value["components"].IsArray()) {
 
 		for (auto& componentValue : value["components"].GetArray()) {
 

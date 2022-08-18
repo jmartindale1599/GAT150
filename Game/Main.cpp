@@ -61,8 +61,6 @@ int main() {
 
 		neu::g_time.Tick();
 
-		scene.Update();
-
 		neu::g_inputSystem.Update();
 
 		neu::g_audio.Update();
@@ -70,6 +68,8 @@ int main() {
 		if (neu::g_inputSystem.GetKeyDown(neu::key_escape)) quit = true;
 
 		//render
+
+		scene.Update();
 
 		neu::g_renderer.BeginFrame();
 

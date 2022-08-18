@@ -118,6 +118,9 @@
     <ClCompile Include="Math\Transform.cpp">
       <Filter>Sources\Math</Filter>
     </ClCompile>
+    <ClCompile Include="Components\SpriteAnimeComponent.cpp">
+      <Filter>Sources\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Memory.h">
@@ -230,6 +233,12 @@
     </ClInclude>
     <ClInclude Include="Serialization\ISerialisable.h">
       <Filter>Serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="Math\Rect.h">
+      <Filter>Sources\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\SpriteAnimeComponent.h">
+      <Filter>Sources\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

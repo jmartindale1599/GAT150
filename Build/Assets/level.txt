@@ -19,7 +19,22 @@
             {
                "type":"PlayerComponent",
                "speed":200
-            }
+            },
+	    {
+               "type":"ModelComponent",
+               "model_name":"models/Model.txt"
+            },
+	    { "type":"PhysicsComponent",
+	      "damping":0.999
+	    },
+	    { "type":"SpriteAnimeComponent",
+	      "texture_name":"sprites/Fire-Skull-Files/PNG/skulli.png",
+	      "fps":4,
+	      "num_colums":4,
+	      "num_rows":1,
+	      "startFrame":1,
+	      "endFrame":4
+	    }
          ]
       }
    ]

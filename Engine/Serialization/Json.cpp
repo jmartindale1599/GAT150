@@ -8,6 +8,8 @@
 
 #include "../Math/Color.h"
 
+#include "../Math/Rect.h"
+
 #include <fstream>
 
 namespace neu::json {
@@ -172,6 +174,32 @@ namespace neu::json {
 
 		return true;
 
+	}
+
+	//[x,y,w,h] [0,0,32,32]
+
+	bool Get(const rapidjson::Value& value, const std::string& name, Rect& data){
+
+		if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsArray() == false || value[name.c_str()].Size() != 4) {
+
+			LOG("error reading json data %s", name.c_str());
+
+			return false;
+
+		}
+
+		auto& array = value[name.c_str()];
+
+		data.x = array[0].GetInt();
+
+		data.y = array[1].GetInt();
+		
+		data.w = array[2].GetInt();
+		
+		data.h = array[3].GetInt();
+
+		return true;
+	
 	}
 
 }

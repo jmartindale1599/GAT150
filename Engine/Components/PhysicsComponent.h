@@ -6,7 +6,7 @@
 
 namespace neu {
 
-	class PhysicsComponent : public Component {
+	class PhysicsComponent : public Component{
 
 	public:
 
