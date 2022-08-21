@@ -46,6 +46,8 @@
 
 #include "Resource/ResourceMagager.h"
 
+#include "Physics/PhysicsSystem.h"
+
 #include <memory>
 
 #include <iostream>
@@ -68,6 +70,8 @@ namespace neu {
 	extern AudioSystem g_audio;
 
 	extern ResourceManager g_resources;
+
+	extern PhysicsSystem g_physicsSystem;
 
 	class Engine : public Singleton<Engine> {
 

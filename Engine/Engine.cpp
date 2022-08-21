@@ -15,7 +15,7 @@ namespace neu {
 
 	ResourceManager g_resources;
 
-
+	PhysicsSystem g_physicsSystem;
 
 	void Engine::Register(){
 

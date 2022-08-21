@@ -21,6 +21,8 @@ int main() {
 
 	neu::g_resources.initialize();
 
+	neu::g_physicsSystem.Initialize();
+
 	neu::Engine::Instance().Register();
 
 	//create window
@@ -62,6 +64,8 @@ int main() {
 		neu::g_time.Tick();
 
 		neu::g_inputSystem.Update();
+
+		neu::g_physicsSystem.Update();
 
 		neu::g_audio.Update();
 

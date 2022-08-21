@@ -35,6 +35,9 @@
     <Filter Include="Serialization">
       <UniqueIdentifier>{09983e2a-e976-407c-b93b-a6e949ccfeb2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Physics">
+      <UniqueIdentifier>{f0a7dfa1-73bb-4477-9fb9-3b81e3d45f31}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\Memory.cpp">
@@ -120,6 +123,9 @@
     </ClCompile>
     <ClCompile Include="Components\SpriteAnimeComponent.cpp">
       <Filter>Sources\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\PhysicsSystem.cpp">
+      <Filter>Physics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -239,6 +245,9 @@
     </ClInclude>
     <ClInclude Include="Components\SpriteAnimeComponent.h">
       <Filter>Sources\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\PhysicsSystem.h">
+      <Filter>Physics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
