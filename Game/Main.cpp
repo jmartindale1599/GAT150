@@ -57,6 +57,8 @@ int main() {
 
 	scene.Read(document);
 
+	scene.Initialize();
+
 	while (!quit) {
 
 		//update

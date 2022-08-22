@@ -30,6 +30,22 @@ void neu::Actor::Update(){
 
 }
 
+void neu::Actor::Initialize() {
+
+	for (auto& component : m_components) {
+
+		component->Initialize();
+
+	}
+
+	for (auto& child : m_children) {
+
+		child->Initialize();
+
+	}
+
+}
+
 void neu::Actor::Draw(Renderer& renderer){
 
 	for (auto& component : m_components) {

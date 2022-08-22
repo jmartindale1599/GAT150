@@ -16,7 +16,7 @@ namespace neu {
 
 	class Game;
 
-	class Scene : public ISerializable{
+	class Scene : public GameObject, public ISerializable{
 
 	public:
 
@@ -26,7 +26,9 @@ namespace neu {
 
 		~Scene() = default;
 
-		void Update();
+		void Update() override;
+
+		void Initialize() override;
 
 		void Draw(Renderer& renderer);
 

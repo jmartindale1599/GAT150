@@ -32,7 +32,6 @@ namespace neu {
 
 		int endFrame = 0;
 
-
 		int frame = 0;
 
 		float frameTimer = 0;

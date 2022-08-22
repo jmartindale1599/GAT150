@@ -14,17 +14,17 @@ namespace neu {
 
 		void Update() override;
 
-		void ApplyForce(const Vector2& force) { acceleration += force; }
+		virtual void ApplyForce(const Vector2& force) { acceleration += force; }
 
+		virtual bool Write(const rapidjson::Value& value) const override;
+
+		virtual bool Read(const rapidjson::Value& value) override;
+	
 		Vector2 velocity;
 
 		Vector2 acceleration;
 
 		float damping = 1.0f;
-
-		virtual bool Write(const rapidjson::Value& value) const override;
-
-		virtual bool Read(const rapidjson::Value& value) override;
 
 	};
 

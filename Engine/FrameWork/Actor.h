@@ -24,6 +24,8 @@ namespace neu {
 
 		virtual void Update() override;
 
+		virtual void Initialize() override;
+
 		virtual void Draw(Renderer& renderer);
 
 		void addChild(std::unique_ptr<Actor> child);
