@@ -26,7 +26,7 @@ namespace neu {
 
 		};
 	
-		struct Collision {
+		struct CollisionData {
 
 			Vector2 size;
 
@@ -49,6 +49,8 @@ namespace neu {
 		void Shutdown();
 
 		void Update();
+
+		void SetCollisionBox(b2Body* body, const CollisionData& data, class Actor* actor = nullptr);
 
 		b2Body* CreateBody(const Vector2& position, float angle, const RigidBodyData& data);
 

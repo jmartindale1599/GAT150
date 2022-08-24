@@ -48,7 +48,7 @@ namespace neu {
 
 	bool RBPhysicsComponent::Read(const rapidjson::Value& value){
 
-		RBPhysicsComponent::Read(value);
+		PhysicsComponent::Read(value);
 
 		READ_DATA(value, data.gravityScale);
 		

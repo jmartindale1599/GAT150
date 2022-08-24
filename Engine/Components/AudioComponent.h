@@ -2,6 +2,8 @@
 
 #include "../FrameWork/Component.h"
 
+#include "Audio/AudioChannel.h"
+
 namespace neu {
 
 	class AudioComponent : public Component {
@@ -10,11 +12,17 @@ namespace neu {
 
 		AudioComponent() = default;
 
+		~AudioComponent();
+
+		void Initialize() override;
+
 		void Update() override;
 
 		void Play();
 
 		void Stop();
+
+		AudioChannel m_channel;
 
 		std::string m_soundName;
 

@@ -9,23 +9,23 @@
 
 void neu::PlayerComponent::Update(){
 
-	float thrust = 0;
+	Vector2 direction = Vector2::zero;
 
 	if (neu::g_inputSystem.GetKeyDown(neu::key_w)) {
 
-		thrust = m_speed;
+		direction = Vector2::up;
 
 	}
 
 	if (neu::g_inputSystem.GetKeyDown(neu::key_a)) {
 
-		m_owner->m_transform.rotation -= m_speed * neu::g_time.deltaTime;
+		direction = Vector2::left;
 
 	}
 
 	if (neu::g_inputSystem.GetKeyDown(neu::key_d)) {
 
-		m_owner->m_transform.rotation += m_speed * neu::g_time.deltaTime;
+		direction = Vector2::right;
 
 	}
 
@@ -33,27 +33,17 @@ void neu::PlayerComponent::Update(){
 
 	if (component) {
 
-		//thrust force
-
-		Vector2 force = Vector2::Rotate({ 0, -1 }, Math::DegToRad(m_owner->m_transform.rotation)) * thrust;
-
-		component->ApplyForce(force);
-
-		//center grav force
-
-		//force = (Vector2{ 400,300 } - m_owner->m_transform.position).Normalized() * 60.0f;
-
-		//component->ApplyForce(force);
+		component->ApplyForce(direction * m_speed);
 
 	}
 
-	if (g_inputSystem.GetKeyDown(key_space)){// == InputSystem::State::Pressed) {
+	if (g_inputSystem.GetKeyDown(key_space)){
 
-		auto component = m_owner->GetComponent<AudioComponent>();
+		auto component = m_owner->GetComponent<PhysicsComponent>();
 
 		if (component) {
 
-			component->Play();
+			component->ApplyForce(direction * m_speed);
 
 		}
 

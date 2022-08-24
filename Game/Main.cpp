@@ -31,20 +31,6 @@ int main() {
 
 	neu::g_renderer.SetClearColor(neu::Color{ 0, 0, 0, 255 });
 
-	//load assets
-
-	//shared_ptr<neu::Texture> texture = make_shared<neu::Texture>();
-	
-	//texture->Create(neu::g_renderer, "sprites/Russle.png");
-
-	//shared_ptr<neu::Model> model = make_shared<neu::Model>();
-
-	//model->Create("models/Model.txt");
-
-	neu::g_audio.AddAudio("music","audio/emotional-disappointed.wav");
-	
-	neu::g_audio.AddAudio("lazar","audio/Lazer.wav");
-
 	//create scene
 
 	bool quit = false;
@@ -84,6 +70,12 @@ int main() {
 		neu::g_renderer.EndFrame();
 
 	}
+
+	neu::g_physicsSystem.Shutdown();
+
+	neu::g_inputSystem.Shutdown();
+
+	neu::g_resources.shutDown();
 
 	neu::g_renderer.Shutdown();
 

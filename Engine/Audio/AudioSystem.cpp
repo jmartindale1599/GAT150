@@ -3,6 +3,7 @@
 #include "../Core/Logger.h"
 
 #include <fmod.hpp>
+using namespace neu;
 
 void neu::AudioSystem::Initialize(){
 
@@ -56,34 +57,44 @@ void neu::AudioSystem::AddAudio(const std::string& name, const std::string& file
 
 }
 
-void neu::AudioSystem::PlayAudio(const std::string& name, bool loop){
+AudioChannel neu::AudioSystem::PlayAudio(const std::string& name, float volume, float pitch, bool loop){
+
+	// find sound in map 
 
 	auto iter = m_sounds.find(name);
-		
-	if (iter == m_sounds.end()) {
 
-		LOG("Error could not find sound %s. ", name.c_str());
+	// if sound key not found in map (iter == end()), return default channel 
+
+	if (iter == m_sounds.end()){
+
+		LOG("Error could not find sound %s.", name.c_str());
+		
+		return AudioChannel{};
 
 	}
 
-	if (iter != m_sounds.end()){
+	// get sound pointer from iterator 
+	
+	FMOD::Sound* sound = iter->second;
+	
+	FMOD_MODE mode = (loop) ? FMOD_LOOP_NORMAL : FMOD_LOOP_OFF;
+	
+	sound->setMode(mode);
 
-		FMOD::Sound* sound = iter->second;
-		
-		if (loop) {
+	// play sound, sets the pointer to the channel it is playing in 
+	
+	FMOD::Channel* channel;
+	
+	m_fmodSystem->playSound(sound, 0, false, &channel);
+	
+	channel->setVolume(volume);
+	
+	channel->setPitch(pitch);
+	
+	channel->setPaused(false);
 
-			sound->setMode(FMOD_LOOP_NORMAL);
-
-		}else{
-
-			sound->setMode(FMOD_LOOP_OFF);
-			
-		}
-
-		FMOD::Channel* channel;
-			
-		m_fmodSystem->playSound(sound, 0, false, &channel);
-		
-	}
+	// return audio channel with channel pointer set 
+	
+	return AudioChannel{ channel };
 
 }

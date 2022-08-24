@@ -40,6 +40,10 @@
 
 #include "Components/SpriteAnimeComponent.h"
 
+#include "Components/RBPhysicsComponent.h"
+
+#include "Components/CollisionComponent.h"
+
 #include "Renderer/Renderer.h"
 
 #include "Audio/AudioSystem.h"

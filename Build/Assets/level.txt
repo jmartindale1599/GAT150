@@ -1,5 +1,62 @@
 {
    "actors":[
+     {
+         "type":"Actor",
+         "name":"Background",
+         "transform":{
+            "position":[
+               400,
+               300
+            ],
+            "scale":[
+               1,
+               1
+            ],
+            "rotation":0
+         },
+         "components":[
+            {
+               "type":"SpriteComponent",
+               "texture_name":"Textures/background.png"
+            }
+         ]
+      },{ 
+         "type":"Actor", 
+         "name":"Music", 
+         "components":[ 
+            { 
+               "type":"AudioComponent", 
+               "m_soundName":"audio/emotional-disappointed.mp3", 
+               "m_playOnAwake":true, 
+               "m_loop":true 
+            } 
+         ] 
+      },
+      {
+         "type":"Actor",
+         "name":"Floor",
+         "transform":{
+            "position":[
+               400,
+               540
+            ],
+            "scale":[
+               1,
+               1
+            ],
+            "rotation":0
+         },
+         "components":[
+            {
+               "type":"RBPhysicsComponent",
+               "data.isDynamic":false
+            },
+            {
+               "type":"CollisionComponent",
+               "data.size": [800, 24]
+            }
+         ]
+      },
       {
          "type":"Actor",
          "name":"Player",
@@ -10,31 +67,35 @@
                300
             ],
             "scale":[
-               2,
-               2
+               1,
+               1
             ],
             "rotation":0
          },
          "components":[
             {
                "type":"PlayerComponent",
-               "speed":200
+               "speed":20
             },
-	    {
-               "type":"ModelComponent",
-               "model_name":"models/Model.txt"
+            {
+               "type":"RBPhysicsComponent",
+               "damping":0.8,
+               "data.gravity_scale":1,
+               "data.constrain_angle":true
             },
-	    { "type":"PhysicsComponent",
-	      "damping":0.999
-	    },
-	    { "type":"SpriteAnimeComponent",
-	      "texture_name":"sprites/Fire-Skull-Files/PNG/skulli.png",
-	      "fps":4,
-	      "num_colums":4,
-	      "num_rows":1,
-	      "startFrame":1,
-	      "endFrame":4
-	    }
+            {
+               "type":"CollisionComponent",
+               "data.size": [48, 48]
+            },
+            {
+               "type":"SpriteAnimeComponent",
+               "texture_name":"Textures/skulli.png",
+               "fps":12,
+               "num_colums":4,
+               "num_rows":1,
+               "startFrame":1,
+               "endFrame":4
+            }
          ]
       }
    ]

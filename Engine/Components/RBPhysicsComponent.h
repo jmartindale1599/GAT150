@@ -24,6 +24,8 @@ namespace neu {
 
 		virtual bool Read(const rapidjson::Value& value) override;
 
+		friend class CollisionComponent;
+
 	private:
 
 		PhysicsSystem::RigidBodyData data;
