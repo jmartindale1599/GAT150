@@ -12,6 +12,10 @@ namespace neu{
 		
 		m_world = std::make_unique<b2World>(gravity);
 	
+		m_contactListener = std::make_unique<ContactListener>();
+
+		m_world->SetContactListener(m_contactListener.get());
+
 	}
 
 	b2Body* PhysicsSystem::CreateBody(const Vector2& position, float angle, const RigidBodyData& data){

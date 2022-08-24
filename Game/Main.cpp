@@ -71,6 +71,8 @@ int main() {
 
 	}
 
+	scene.removeAll();
+
 	neu::g_physicsSystem.Shutdown();
 
 	neu::g_inputSystem.Shutdown();

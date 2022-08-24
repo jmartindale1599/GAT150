@@ -4,6 +4,8 @@
 
 #include "Math/Vector2.h"
 
+#include "ContactListener.h"
+
 #include <memory> 
 
 #define VECTOR2_TO_B2VEC2(vec) (*(b2Vec2*)(&vec))
@@ -11,6 +13,8 @@
 #define B2VEC2_TO_VECTOR2(vec) (*(neu::Vector2*)(&vec))
 
 namespace neu {
+
+	class ContactListener;
 
 	class PhysicsSystem{
 
@@ -65,6 +69,8 @@ namespace neu {
 		static const float pixelsPerUnit;
 
 		std::unique_ptr<b2World> m_world;
+
+		std::unique_ptr<ContactListener> m_contactListener;
 	
 	};
 

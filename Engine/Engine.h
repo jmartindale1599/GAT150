@@ -38,6 +38,8 @@
 
 #include "Components/ModelComponent.h"
 
+#include "Components/TextComponent.h"
+
 #include "Components/SpriteAnimeComponent.h"
 
 #include "Components/RBPhysicsComponent.h"

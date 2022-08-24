@@ -7,6 +7,20 @@
 
 #include <iostream>
 
+void neu::PlayerComponent::Initialize() {
+
+	auto component = m_owner->GetComponent<CollisionComponent>();
+
+	if (component) {
+
+		component->setCollisionEnter(std::bind(&PlayerComponent::onCollisionEnter, this, std::placeholders::_1));
+
+		component->setCollisionExit(std::bind(&PlayerComponent::onCollisionExit, this, std::placeholders::_1));
+
+	}
+
+}
+
 void neu::PlayerComponent::Update(){
 
 	Vector2 direction = Vector2::zero;
@@ -62,5 +76,23 @@ bool neu::PlayerComponent::Read(const rapidjson::Value& value){
 	READ_DATA(value, m_speed);
 
 	return true;
+
+}
+
+void neu::PlayerComponent::onCollisionEnter(Actor* other){
+
+	//if (other->getName() == "Coin") {
+
+	//	other->setDestroy();
+
+	//}
+
+	std::cout << "player enter\n";
+
+}
+
+void neu::PlayerComponent::onCollisionExit(Actor* other){
+
+	std::cout << "player enter\n";
 
 }

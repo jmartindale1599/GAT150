@@ -24,6 +24,8 @@ namespace neu {
 		REGISTER_CLASS(AudioComponent);
 		
 		REGISTER_CLASS(ModelComponent);
+
+		REGISTER_CLASS(TextComponent);
 		
 		REGISTER_CLASS(PhysicsComponent);
 

@@ -6,11 +6,15 @@
 
 #include "Physics/PhysicsSystem.h"
 
+#include <functional>
+
 namespace neu {
 
 	class CollisionComponent : public Component, public ICollosion {
 
 	public:
+
+		using functionPtr = std::function<void(Actor*)>;
 
 		virtual void Initialize() override;
 
@@ -20,6 +24,10 @@ namespace neu {
 
 		virtual void Update() override;
 
+		void setCollisionEnter(functionPtr function) { m_enterFunction = function; }
+
+		void setCollisionExit(functionPtr function) { m_exitFunction = function; }
+
 		virtual void onCollisionEnter(Actor* other) override;
 
 		virtual void onCollisionExit(Actor* other) override;
@@ -27,6 +35,10 @@ namespace neu {
 	private:
 
 		PhysicsSystem::CollisionData data;
+
+		functionPtr m_enterFunction;
+
+		functionPtr m_exitFunction;
 
 	};
 

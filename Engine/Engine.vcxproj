@@ -29,6 +29,7 @@
     <ClCompile Include="Components\RBPhysicsComponent.cpp" />
     <ClCompile Include="Components\SpriteAnimeComponent.cpp" />
     <ClCompile Include="Components\SpriteComponent.cpp" />
+    <ClCompile Include="Components\TextComponent.cpp" />
     <ClCompile Include="Core\File.cpp" />
     <ClCompile Include="Core\Logger.cpp" />
     <ClCompile Include="Core\Memory.cpp" />
@@ -44,6 +45,7 @@
     <ClCompile Include="Math\Transform.cpp" />
     <ClCompile Include="Math\Vector2.cpp" />
     <ClCompile Include="Model.cpp" />
+    <ClCompile Include="Physics\ContactListener.cpp" />
     <ClCompile Include="Physics\PhysicsSystem.cpp" />
     <ClCompile Include="Renderer\Font.cpp" />
     <ClCompile Include="Renderer\Renderer.cpp" />
@@ -64,6 +66,7 @@
     <ClInclude Include="Components\RenderComponent.h" />
     <ClInclude Include="Components\SpriteAnimeComponent.h" />
     <ClInclude Include="Components\SpriteComponent.h" />
+    <ClInclude Include="Components\TextComponent.h" />
     <ClInclude Include="Core\File.h" />
     <ClInclude Include="Core\Logger.h" />
     <ClInclude Include="Core\Memory.h" />
@@ -88,6 +91,7 @@
     <ClInclude Include="Math\Vector3.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="Physics\Collision.h" />
+    <ClInclude Include="Physics\ContactListener.h" />
     <ClInclude Include="Physics\PhysicsSystem.h" />
     <ClInclude Include="Renderer\Font.h" />
     <ClInclude Include="Renderer\Renderer.h" />

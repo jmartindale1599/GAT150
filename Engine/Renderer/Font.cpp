@@ -2,6 +2,10 @@
 
 #include "..\Core\Logger.h"
 
+#include "Math/Color.h"
+
+#include "SDL_surface.h"
+
 #include <SDL_ttf.h>
 
 neu::Font::Font(const std::string& filename, int fontSize){
@@ -31,6 +35,24 @@ bool neu::Font::Create(std::string filename, ...){
     va_end(args);
 
 	return Load(filename, fontSize);
+
+}
+
+SDL_Surface* neu::Font::CreateSurface(const std::string& text, const Color& color){
+	
+	SDL_Color c = *((SDL_Color*)(&color));
+	
+	SDL_Surface* surface = TTF_RenderText_Solid(m_ttfFont, text.c_str(), c);
+	
+	if (surface == nullptr){
+
+		LOG(SDL_GetError());
+	
+	}
+
+	return surface;
+
+
 }
 
 bool neu::Font::Load(const std::string& filename, int fontSize){

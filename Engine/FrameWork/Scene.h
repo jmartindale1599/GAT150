@@ -34,6 +34,8 @@ namespace neu {
 
 		void Add(std::unique_ptr<Actor> actor);
 
+		void removeAll();
+
 		template<typename T> T* GetActor();
 
 		void setGame(Game* game) { m_game = game; }

@@ -69,6 +69,25 @@ namespace neu{
 
     }
 
+    bool Texture::CreateFromSurface(SDL_Surface* surface, Renderer& renderer){
+        
+        if (m_texture) SDL_DestroyTexture(m_texture);
+
+        m_texture = SDL_CreateTextureFromSurface(renderer.m_renderer, surface);
+
+        SDL_FreeSurface(surface);
+            
+            if (m_texture == nullptr){
+
+                LOG(SDL_GetError());
+              
+                return false;
+            }
+
+        return true;
+    
+    }
+
     neu::Vector2 Texture::GetSize() const{
 
         SDL_Point point;

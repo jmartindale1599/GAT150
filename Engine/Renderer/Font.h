@@ -6,7 +6,11 @@
 
 struct _TTF_Font;
 
+struct SDL_Surface;
+
 namespace neu{
+
+	struct Color;
 
 	class Font : public Resource{
 
@@ -19,6 +23,9 @@ namespace neu{
 		~Font();
 
 		bool Create(std::string filename, ...) override;
+
+		SDL_Surface* CreateSurface(const std::string& text, const Color& color);
+
 		bool Load(const std::string& filename, int fontSize);
 
 		friend class Text;

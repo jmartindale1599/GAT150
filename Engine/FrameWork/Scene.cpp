@@ -83,6 +83,12 @@ namespace neu {
 
 	}
 
+	void Scene::removeAll(){
+
+		m_actors.clear();
+
+	}
+
 	bool Scene::Write(const rapidjson::Value& value) const{
 
 		return true;
