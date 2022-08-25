@@ -12,6 +12,8 @@ namespace neu {
 
 		PhysicsComponent() = default;
 
+		CLASS_CLONE(PhysicsComponent)
+
 		void Update() override;
 
 		virtual void ApplyForce(const Vector2& force) { acceleration += force; }

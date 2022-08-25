@@ -45,6 +45,19 @@ int main() {
 
 	scene.Initialize();
 
+
+	for (int i = 0; i < 15; i++) {
+
+	auto actor = neu::Factory::Instance().Create<neu::Actor>("Coin");
+	
+	actor->m_transform.position = {neu::randomf(0,800), 100.0f};
+
+	actor->Initialize();
+
+	scene.Add(std::move(actor));
+
+	}
+
 	while (!quit) {
 
 		//update

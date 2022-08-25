@@ -10,6 +10,8 @@ namespace neu {
 
 	public:
 
+		CLASS_CLONE(ModelComponent)
+
 		virtual void Update() override;
 
 		virtual void Draw(Renderer& renderer) override;

@@ -18,6 +18,8 @@ namespace neu {
 
 		public:
 			
+			CLASS_CLONE(TextComponent)
+
 			virtual void Update() override;
 			
 			virtual void Draw(Renderer& renderer) override;

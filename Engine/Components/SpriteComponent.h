@@ -14,6 +14,8 @@ namespace neu {
 
 	public:
 
+		CLASS_CLONE(SpriteComponent)
+
 		virtual void Update() override;
 
 		virtual void Draw(Renderer& renderer) override;

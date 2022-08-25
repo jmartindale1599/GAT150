@@ -14,6 +14,8 @@ namespace neu {
 
 		~RBPhysicsComponent();
 
+		CLASS_CLONE(RBPhysicsComponent)
+
 		void Initialize() override;
 
 		void Update() override;

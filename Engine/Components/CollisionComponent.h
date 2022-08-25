@@ -14,6 +14,8 @@ namespace neu {
 
 	public:
 
+		CLASS_CLONE(CollisionComponent)
+
 		using functionPtr = std::function<void(Actor*)>;
 
 		virtual void Initialize() override;

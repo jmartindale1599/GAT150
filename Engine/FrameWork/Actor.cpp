@@ -4,6 +4,24 @@
 
 #include "../Components/RenderComponent.h"
 
+neu::Actor::Actor(const Actor& other){
+
+	name = other.name;
+
+	tag = other.tag;
+
+	scene = other.scene;
+
+	for (auto& component : other.m_components) {
+
+		auto clone = std::unique_ptr<Component>((Component*)component->Clone().release());
+
+		addComponent(std::move(clone));
+
+	}
+
+}
+
 void neu::Actor::Update(){
 
 	for (auto& component : m_components) {
@@ -125,8 +143,6 @@ bool neu::Actor::Read(const rapidjson::Value& value){
 		}
 
 	}
-
-
 
 	return true;
 

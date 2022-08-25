@@ -14,6 +14,8 @@ namespace neu {
 
 		~AudioComponent();
 
+		CLASS_CLONE(AudioComponent)
+
 		void Initialize() override;
 
 		void Update() override;

@@ -41,7 +41,7 @@ namespace neu {
 
 		READ_DATA(value, color);
 
-		m_font = g_resources.Get<Font>(font_name, font_size); // !! Get<Font> from g_resources, passing in font_name and font_size
+		m_font = g_resources.Get<Font>(font_name, font_size);
 
 		m_texture = std::make_unique<Texture>();
 

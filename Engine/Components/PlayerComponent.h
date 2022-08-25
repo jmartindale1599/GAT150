@@ -12,6 +12,8 @@ namespace neu {
 
 		PlayerComponent() = default;
 
+		CLASS_CLONE(PlayerComponent)
+
 		void Update() override;
 
 		void Initialize() override;

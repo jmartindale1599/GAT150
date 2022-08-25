@@ -24,7 +24,11 @@ namespace neu {
 
 		Scene(Game* game) : m_game{ game } {}
 
+		Scene(const Scene& other) {}
+
 		~Scene() = default;
+
+		CLASS_CLONE(Scene)
 
 		void Update() override;
 

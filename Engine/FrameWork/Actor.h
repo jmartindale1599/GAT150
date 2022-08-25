@@ -20,7 +20,11 @@ namespace neu {
 
 		Actor() = default;
 
+		Actor(const Actor& other);
+
 		Actor(const Transform& transform) : m_transform{ transform } {}
+
+		CLASS_CLONE(Actor)
 
 		virtual void Update() override;
 
@@ -34,7 +38,7 @@ namespace neu {
 
 		virtual void onCollision(Actor* other) {}
 
-		float GetRadius() { return 0; } //m_model.getRadius()* m_transform.scale; }
+		float GetRadius() { return 0; }
 
 		const std::string& getTag() { return tag; }
 
@@ -65,10 +69,6 @@ namespace neu {
 		std::string name;
 
 		bool m_destroy = false;
-
-		Vector2 m_velocity;
-
-		float m_damping = 1;
 
 		Scene* m_scene = nullptr;
 
