@@ -10,6 +10,8 @@ neu::Actor::Actor(const Actor& other){
 
 	tag = other.tag;
 
+	m_transform = other.m_transform;
+
 	scene = other.scene;
 
 	for (auto& component : other.m_components) {
@@ -23,6 +25,8 @@ neu::Actor::Actor(const Actor& other){
 }
 
 void neu::Actor::Update(){
+
+	if (!active) return; 
 
 	for (auto& component : m_components) {
 
@@ -65,6 +69,8 @@ void neu::Actor::Initialize() {
 }
 
 void neu::Actor::Draw(Renderer& renderer){
+
+	if (!active) return;
 
 	for (auto& component : m_components) {
 		
@@ -119,6 +125,8 @@ bool neu::Actor::Read(const rapidjson::Value& value){
 	READ_DATA(value, tag);
 
 	READ_DATA(value, name);
+
+	READ_DATA(value, active);
 
 	if (value.HasMember("transform")) m_transform.Read(value["transform"]);
 

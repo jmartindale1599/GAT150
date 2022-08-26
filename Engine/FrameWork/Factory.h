@@ -2,6 +2,8 @@
 
 #include "Singleton.h"
 
+#include "Core/Logger.h"
+
 #include <map>
 
 #include <string>
@@ -15,6 +17,8 @@ namespace neu {
 	class CreatorBase {
 
 	public:
+
+		virtual ~CreatorBase() = default;
 
 		virtual std::unique_ptr<GameObject> Create() = 0;
 
@@ -40,6 +44,8 @@ namespace neu {
 
 	public:
 
+		~prefabCreator() = default;
+
 		prefabCreator(std::unique_ptr<T> instance) : m_instance{ std::move(instance) } {}
 
 		std::unique_ptr<GameObject> Create() override {
@@ -57,6 +63,8 @@ namespace neu {
 	class Factory : public Singleton<Factory> {
 
 	public:
+
+		void Shutdown() { m_registry.clear(); }
 
 		template <typename T>
 
@@ -103,6 +111,8 @@ namespace neu {
 			return std::unique_ptr<T>(dynamic_cast<T*>(iter->second->Create().release()));
 
 		}
+
+		LOG("error could not fund key %s", key.c_str());
 
 		return std::unique_ptr<T>();
 	

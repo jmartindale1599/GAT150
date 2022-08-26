@@ -48,6 +48,18 @@ namespace neu {
 
 		void GetName(const std::string& name) { this->name = name; }
 
+		void setDestroy() { m_destroy = true; }
+
+		void setActive(bool active) { this->active = active; }
+
+		bool isActive() { return active; }
+
+		Scene* GetScene() { return m_scene; }
+
+		friend class Scene;
+
+		friend class Component;
+
 		Scene* scene;
 
 		friend class Scene;
@@ -70,6 +82,8 @@ namespace neu {
 
 		bool m_destroy = false;
 
+		bool active = true;
+		
 		Scene* m_scene = nullptr;
 
 		Actor* m_parent = nullptr;

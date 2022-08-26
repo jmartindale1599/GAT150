@@ -142,6 +142,9 @@
     <ClCompile Include="Components\TextComponent.cpp">
       <Filter>Sources\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Components\TilemapComponent.cpp">
+      <Filter>Sources\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Memory.h">
@@ -280,6 +283,9 @@
       <Filter>Physics</Filter>
     </ClInclude>
     <ClInclude Include="Components\TextComponent.h">
+      <Filter>Sources\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\TilemapComponent.h">
       <Filter>Sources\Components</Filter>
     </ClInclude>
   </ItemGroup>

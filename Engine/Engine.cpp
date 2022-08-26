@@ -38,6 +38,8 @@ namespace neu {
 		REGISTER_CLASS(SpriteComponent);
 
 		REGISTER_CLASS(SpriteAnimeComponent);
+
+		REGISTER_CLASS(TilemapComponent);
 		
 	}
 

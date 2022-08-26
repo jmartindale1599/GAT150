@@ -81,11 +81,11 @@ bool neu::PlayerComponent::Read(const rapidjson::Value& value){
 
 void neu::PlayerComponent::onCollisionEnter(Actor* other){
 
-	//if (other->getName() == "Coin") {
+	if (other->getName() == "Coin") {
 
-	//	other->setDestroy();
+		other->setDestroy();
 
-	//}
+	}
 
 	std::cout << "player enter\n";
 

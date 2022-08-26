@@ -8,6 +8,8 @@
 
 #include "Core/Time.h"
 
+#include "Core/Logger.h"
+
 #include "Math/Random.h"
 
 #include "Math/MathUtils.h"
@@ -45,6 +47,8 @@
 #include "Components/RBPhysicsComponent.h"
 
 #include "Components/CollisionComponent.h"
+
+#include "Components/TilemapComponent.h"
 
 #include "Renderer/Renderer.h"
 

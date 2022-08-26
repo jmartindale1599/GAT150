@@ -1,6 +1,8 @@
 
 #include "Engine.h"
 
+#include "BeheadBall.h"
+
 #include <iostream>
 
 using namespace std;
@@ -31,32 +33,13 @@ int main() {
 
 	neu::g_renderer.SetClearColor(neu::Color{ 0, 0, 0, 255 });
 
-	//create scene
+	//create game
+
+	std::unique_ptr<BeheadBall> game = std::make_unique<BeheadBall>();
+
+	game->Initialize();
 
 	bool quit = false;
-
-	neu::Scene scene;
-
-	rapidjson::Document document;
-
-	bool success = neu::json::Load("level.txt", document);
-
-	scene.Read(document);
-
-	scene.Initialize();
-
-
-	for (int i = 0; i < 15; i++) {
-
-	auto actor = neu::Factory::Instance().Create<neu::Actor>("Coin");
-	
-	actor->m_transform.position = {neu::randomf(0,800), 100.0f};
-
-	actor->Initialize();
-
-	scene.Add(std::move(actor));
-
-	}
 
 	while (!quit) {
 
@@ -74,17 +57,21 @@ int main() {
 
 		//render
 
-		scene.Update();
+		game->Update();
 
 		neu::g_renderer.BeginFrame();
 
-		scene.Draw(neu::g_renderer);
+		game->Draw(neu::g_renderer);
 
 		neu::g_renderer.EndFrame();
 
 	}
 
-	scene.removeAll();
+	game->Shutdown();
+
+	game.reset();
+
+	neu::Factory::Instance().Shutdown();
 
 	neu::g_physicsSystem.Shutdown();
 
