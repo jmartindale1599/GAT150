@@ -48,12 +48,12 @@ namespace neu::json {
 
 		if (!value.HasMember(name.c_str())) return false;
 
-		if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsInt() ==false){
+		if (!value[name.c_str()].IsInt()){
 
 			LOG("error reading json data %s", name.c_str());
-
+			
 			return false;
-
+		
 		}
 
 		data = value[name.c_str()].GetInt();
@@ -66,7 +66,7 @@ namespace neu::json {
 
 		if (!value.HasMember(name.c_str())) return false;
 
-		if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsNumber() == false) {
+		if (!value[name.c_str()].IsNumber()) {
 
 			LOG("error reading json data %s", name.c_str());
 
@@ -86,7 +86,7 @@ namespace neu::json {
 
 		if (!value.HasMember(name.c_str())) return false;
 
-		if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsBool() == false) {
+		if (!value[name.c_str()].IsBool()) {
 
 			LOG("error reading json data %s", name.c_str());
 
@@ -106,7 +106,7 @@ namespace neu::json {
 
 		if (!value.HasMember(name.c_str())) return false;
 
-		if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsString() == false) {
+		if (!value[name.c_str()].IsString()) {
 
 			LOG("error reading json data %s", name.c_str());
 
@@ -126,7 +126,7 @@ namespace neu::json {
 
 		if (!value.HasMember(name.c_str())) return false;
 
-		if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsArray()== false || value[name.c_str()].Size() != 2){
+		if (!value[name.c_str()].IsArray()) {
 
 			LOG("error reading json data %s", name.c_str());
 
@@ -160,7 +160,7 @@ namespace neu::json {
 
 		if (!value.HasMember(name.c_str())) return false;
 
-		if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsArray() == false || value[name.c_str()].Size() != 4) {
+		if (!value[name.c_str()].IsArray()) {
 
 			LOG("error reading json data %s", name.c_str());
 
@@ -194,7 +194,7 @@ namespace neu::json {
 
 		if (!value.HasMember(name.c_str())) return false;
 
-		if (value.HasMember(name.c_str()) == false || value[name.c_str()].IsArray() == false || value[name.c_str()].Size() != 4) {
+		if (!value[name.c_str()].IsArray()) {
 
 			LOG("error reading json data %s", name.c_str());
 
@@ -220,7 +220,7 @@ namespace neu::json {
 
 		if (!value.HasMember(name.c_str())) return false;
 
-		if (!value[name.c_str()].IsArray()){
+		if (!value[name.c_str()].IsArray()) {
 
 			LOG("error reading json data %s", name.c_str());
 

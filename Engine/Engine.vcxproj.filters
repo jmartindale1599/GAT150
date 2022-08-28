@@ -61,9 +61,6 @@
     <ClCompile Include="Core\Time.cpp">
       <Filter>Sources\Core</Filter>
     </ClCompile>
-    <ClCompile Include="Math\MathUtils.cpp">
-      <Filter>Sources\Math</Filter>
-    </ClCompile>
     <ClCompile Include="FrameWork\Scene.cpp">
       <Filter>Sources\FrameWork</Filter>
     </ClCompile>

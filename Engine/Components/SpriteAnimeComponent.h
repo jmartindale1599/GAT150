@@ -24,6 +24,8 @@ namespace neu {
 
 		virtual bool Read(const rapidjson::Value& value) override;
 
+		Rect& GetSource() override;
+
 		float fps = 0;
 
 		int num_colums = 0;
@@ -37,8 +39,6 @@ namespace neu {
 		int frame = 0;
 
 		float frameTimer = 0;
-
-		Rect source;
 
 		std::shared_ptr<Texture> m_texture;
 

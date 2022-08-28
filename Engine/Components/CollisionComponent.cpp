@@ -10,10 +10,22 @@ namespace neu {
 
         auto component = m_owner->GetComponent<RBPhysicsComponent>();
 
-        if (component) {
+        if (component){
+
+            if ( data.size.x == 0 && data.size.y == 0 ){
+
+                auto renderComponent = m_owner->GetComponent<RenderComponent>(); // !! check render component from the owner
+
+                    if (renderComponent){
+
+                        data.size = Vector2{ renderComponent->GetSource().w, renderComponent->GetSource().h};// !! render component source.w, render component source.h };
+
+                    }
+
+            }
 
             g_physicsSystem.SetCollisionBox(component->m_body, data, m_owner);
-
+        
         }
 
     }
