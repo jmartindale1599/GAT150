@@ -33,7 +33,7 @@
          ] 
       },{ 
          "type":"Actor", 
-         "name":"Text", 
+         "name":"Title", 
          "transform":{ 
             "position":[ 
                40, 
@@ -48,7 +48,7 @@
          "components":[ 
             { 
                "type":"TextComponent", 
-               "text":"THIS IS WORKING HAPPY DINOSAUR NOISES", 
+               "text":"TITLE WORDS", 
                "font_name":"fonts/chocolate cake.ttf", 
                "font_size":20, 
                "registration": [0.0, 0.5], 

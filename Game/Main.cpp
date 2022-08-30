@@ -18,12 +18,14 @@ int main() {
 	neu::g_audio.Initialize();
 
 	neu::g_renderer.Initialize();
-
+	
 	neu::g_inputSystem.Initialize();
 
 	neu::g_resources.initialize();
 
 	neu::g_physicsSystem.Initialize();
+
+	neu::g_eventManager.Initialize();
 
 	neu::Engine::Instance().Register();
 
@@ -50,6 +52,8 @@ int main() {
 		neu::g_inputSystem.Update();
 
 		neu::g_physicsSystem.Update();
+
+		neu::g_eventManager.Update();
 
 		neu::g_audio.Update();
 
@@ -78,6 +82,8 @@ int main() {
 	neu::g_inputSystem.Shutdown();
 
 	neu::g_resources.shutDown();
+
+	neu::g_renderer.Shutdown();
 
 	neu::g_renderer.Shutdown();
 

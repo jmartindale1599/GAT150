@@ -28,18 +28,7 @@ void BeheadBall::Initialize(){
 
 	m_scene->Initialize();
 
-
-	for (int i = 0; i < 15; i++) {
-
-		auto actor = neu::Factory::Instance().Create<neu::Actor>("Coin");
-
-		actor->m_transform.position = { neu::randomf(0,800), 100.0f };
-
-		actor->Initialize();
-
-		m_scene->Add(std::move(actor));
-
-	}
+	neu::g_eventManager.Subscribe("EVENT_ADD_POINTS", std::bind(&BeheadBall::ONAddPoints, this, std::placeholders::_1));
 
 }
 
@@ -51,6 +40,66 @@ void BeheadBall::Shutdown(){
 
 void BeheadBall::Update(){
 
+	switch (m_gameState) {
+
+	case BeheadBall::gameState::titleScreen:
+
+		if (neu::g_inputSystem.GetKeyDown(neu::key_space)) {
+
+			m_stateTimer = 0;
+
+			m_scene->getActorFromName("Title")->setActive(false);
+
+			m_gameState = gameState::startLevel;
+
+		}
+
+			break;
+
+	case BeheadBall::gameState::startLevel:
+
+		for (int i = 0; i < 15; i++) {
+
+			auto actor = neu::Factory::Instance().Create<neu::Actor>("Coin");
+
+			actor->m_transform.position = { neu::randomf(0,800), 100.0f };
+
+			actor->Initialize();
+
+			m_scene->Add(std::move(actor));
+
+		}
+
+		m_gameState = gameState::game;
+
+		break;
+
+	case BeheadBall::gameState::game:
+
+		break;
+
+	case BeheadBall::gameState::gameOver:
+
+		break;
+
+	case BeheadBall::gameState::playerDied:
+
+		m_stateTimer -= neu::g_time.deltaTime;
+
+		if (m_stateTimer <= 0) {
+
+			m_gameState = gameState::startLevel;
+
+		}
+
+		break;
+
+	default:
+
+			break;
+
+	}
+
 	m_scene->Update();
 
 }
@@ -58,5 +107,23 @@ void BeheadBall::Update(){
 void BeheadBall::Draw(neu::Renderer& renderer){
 
 	m_scene->Draw(renderer);
+
+}
+
+void BeheadBall::ONAddPoints(const neu::Event& event){
+
+	addPoints(std::get<int>(event.data));
+
+	std::cout << event.name << std::endl;
+
+	std::cout << getScore() << std::endl;
+
+}
+
+void BeheadBall::ONPlayerDead(const neu::Event& event){
+
+	m_gameState = gameState::playerDied;
+
+	m_stateTimer = 4;
 
 }

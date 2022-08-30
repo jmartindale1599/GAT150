@@ -17,6 +17,8 @@ namespace neu {
 
 	PhysicsSystem g_physicsSystem;
 
+	EventManager g_eventManager;
+
 	void Engine::Register(){
 
 		REGISTER_CLASS(Actor);

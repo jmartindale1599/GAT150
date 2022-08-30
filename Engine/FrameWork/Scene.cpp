@@ -61,6 +61,8 @@ namespace neu {
 
 	void Scene::removeAll(){
 
+		for (auto& actor : m_actors) { actor->setDestroy(); }
+
 		m_actors.clear();
 
 	}

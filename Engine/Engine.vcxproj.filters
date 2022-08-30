@@ -55,9 +55,6 @@
     <ClCompile Include="FrameWork\Actor.cpp">
       <Filter>Sources\FrameWork</Filter>
     </ClCompile>
-    <ClCompile Include="Engine.cpp">
-      <Filter>Sources</Filter>
-    </ClCompile>
     <ClCompile Include="Core\Time.cpp">
       <Filter>Sources\Core</Filter>
     </ClCompile>
@@ -141,6 +138,12 @@
     </ClCompile>
     <ClCompile Include="Components\TilemapComponent.cpp">
       <Filter>Sources\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="FrameWork\EventManager.cpp">
+      <Filter>Sources\FrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine.cpp">
+      <Filter>Sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -284,6 +287,12 @@
     </ClInclude>
     <ClInclude Include="Components\TilemapComponent.h">
       <Filter>Sources\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="FrameWork\Event.h">
+      <Filter>Sources\FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="FrameWork\EventManager.h">
+      <Filter>Sources\FrameWork</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -71,9 +71,9 @@ namespace neu {
 	
 	inline T* Scene::getActorFromName(const std::string& name){
 
-		for(auto actor: m_actors){
+		for(auto& actor: m_actors){
 
-			if (actor->getName() == m_actors->getName()){
+			if (actor->getName() == name){
 
 				return dynamic_cast<T*>(actor.get()); 
 				
@@ -91,9 +91,9 @@ namespace neu {
 
 		std::vector<T*> result;
 
-		for (auto actor : m_actors){
+		for (auto& actor : m_actors){
 
-			if (actor->getName() == m_actors->getName()){
+			if (actor->getTag() == tag){
 
 				 T * tagActor = dynamic_cast<T*>(actor.get()); 
 			

@@ -22,6 +22,8 @@
 
 #include "FrameWork/Factory.h"
 
+#include "FrameWork/EventManager.h"
+
 #include "Renderer/Font.h"
 
 #include "Renderer/Text.h"
@@ -66,6 +68,7 @@
 
 #include <algorithm>
 
+#include <variant>
 
 namespace neu {
 
@@ -82,6 +85,8 @@ namespace neu {
 	extern ResourceManager g_resources;
 
 	extern PhysicsSystem g_physicsSystem;
+
+	extern EventManager g_eventManager;
 
 	class Engine : public Singleton<Engine> {
 

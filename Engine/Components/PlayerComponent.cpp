@@ -83,6 +83,14 @@ void neu::PlayerComponent::onCollisionEnter(Actor* other){
 
 	if (other->getName() == "Coin") {
 
+		Event event;
+
+		event.name = "EVENT_ADD_POINTS";
+
+		event.data = 100;
+
+		g_eventManager.Notify(event);
+
 		other->setDestroy();
 
 	}

@@ -54,6 +54,8 @@ namespace neu {
 
 		bool isActive() { return active; }
 
+		bool isDestroyed() { return m_destroy; }
+
 		Scene* GetScene() { return m_scene; }
 
 		friend class Scene;
