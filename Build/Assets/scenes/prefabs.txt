@@ -29,16 +29,19 @@
                "data.restitution":0.7
             },
             {
-               "type":"SpriteAnimeComponent",
-               "texture_name":"Textures/coin.png",
-               "sequence.name":"idle",
-               "sequence.fps":12,
-               "sequence.num_columns":8,
-               "sequence.num_rows":1,
-               "sequence.start_frame":1,
-               "sequence.end_frame":8
-            }
-         ]
+               "default_sequence":"idle",
+                    "sequences":[
+                        {
+                            "sequence.name":"idle",
+                            "sequence.fps":12,
+                            "sequence.num_columns":8,
+                            "sequence.num_rows":1,
+                            "sequence.start_frame":1,
+                            "sequence.end_frame":8,
+                            "texture_name":"coin.png"
+}
+]
+                
       },
       {
          "type":"Actor",
@@ -93,7 +96,12 @@
                         }
                     ]
                 }
-         ]
-      }
-   ]
+	]
 }
+]
+}
+]
+}
+
+
+  

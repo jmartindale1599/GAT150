@@ -69,12 +69,23 @@ void neu::PlayerComponent::Update(){
 
 	}
 
-	auto renderComponent = m_owner->GetComponent<RenderComponent>();
+	auto animeComponent = m_owner->GetComponent<SpriteAnimeComponent>();
 
-	if (renderComponent) {
+	if (animeComponent){
 
-		if (velocity.x != 0) renderComponent->setFlipHorizontal(velocity.x < 0);
+		if (velocity.x != 0) animeComponent->setFlipHorizontal(velocity.x < 0);
+		
+		if (std::fabs(velocity.x) > 0){
 
+			animeComponent->SetSequence("fire");
+		
+		}
+		else{
+
+			animeComponent->SetSequence("idle");
+		
+		}
+	
 	}
 
 }
