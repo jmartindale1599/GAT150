@@ -36,7 +36,7 @@ namespace neu {
 
 		void addComponent(std::unique_ptr<Component> component);
 
-		virtual void onCollision(Actor* other) {}
+		//virtual void onCollision(Actor* other) {}
 
 		float GetRadius() { return 0; }
 
@@ -89,6 +89,8 @@ namespace neu {
 		Scene* m_scene = nullptr;
 
 		Actor* m_parent = nullptr;
+
+		float lifespan = 0;
 
 		std::vector<std::unique_ptr<Component>> m_components;
 

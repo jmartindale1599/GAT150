@@ -1,8 +1,12 @@
 #include "BeheadBall.h"
 
+#include "GameComponents/EnemyComponent.h"
+
 #include "Engine.h"
 
 void BeheadBall::Initialize(){
+
+	REGISTER_CLASS(EnemyComponent);
 
 	m_scene = std::make_unique<neu::Scene>();
 
@@ -61,6 +65,18 @@ void BeheadBall::Update(){
 		for (int i = 0; i < 15; i++) {
 
 			auto actor = neu::Factory::Instance().Create<neu::Actor>("Coin");
+
+			actor->m_transform.position = { neu::randomf(0,800), 100.0f };
+
+			actor->Initialize();
+
+			m_scene->Add(std::move(actor));
+
+		}
+
+		for (int i = 0; i < 3; i++) {
+
+			auto actor = neu::Factory::Instance().Create<neu::Actor>("Ghoul");
 
 			actor->m_transform.position = { neu::randomf(0,800), 100.0f };
 

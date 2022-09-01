@@ -42,6 +42,8 @@ namespace neu {
 		REGISTER_CLASS(SpriteAnimeComponent);
 
 		REGISTER_CLASS(TilemapComponent);
+
+		REGISTER_CLASS(CameraComponent);
 		
 	}
 

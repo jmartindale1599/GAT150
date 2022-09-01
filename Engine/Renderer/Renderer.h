@@ -4,6 +4,8 @@
 
 #include "../Math/Color.h"
 
+#include "Math/3X3.h"
+
 #include "../Renderer/Texture.h"
 
 struct SDL_Renderer;
@@ -38,7 +40,7 @@ namespace neu {
 		
 		void Draw(std::shared_ptr<Texture> texture, const Transform& transform, const Vector2& registration = Vector2(0.5f, 0.5f));
 
-		void Draw(std::shared_ptr<Texture> texture, const Rect& source,const Transform& transform, const Vector2& registration = Vector2(0.5f, 0.5f));
+		void Draw(std::shared_ptr<Texture> texture, const Rect& source,const Transform& transform, const Vector2& registration = Vector2(0.5f, 0.5f), bool flipH = false);
 
 		void DrawLine(float x1, float y1, float x2, float y2);
 
@@ -47,6 +49,10 @@ namespace neu {
 		void DrawPoint(float x1, float y1);
 
 		void DrawPoint(const Vector2& v, const Color& color);
+
+		void SetViewMatrix(const Matrix3x3& view) { m_view = view; }
+
+		void SetViewportMatrix(const Matrix3x3& viewport) { m_viewport = viewport; }
 
 		void SetClearColor(const Color& color) { m_clearColor = color; }
 
@@ -63,6 +69,10 @@ namespace neu {
 		int m_width = 0;
 
 		int m_height = 0;
+
+		Matrix3x3 m_view;
+
+		Matrix3x3 m_viewport;
 
 		SDL_Renderer* m_renderer = nullptr;
 

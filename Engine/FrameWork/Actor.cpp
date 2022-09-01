@@ -4,9 +4,13 @@
 
 #include "../Components/RenderComponent.h"
 
+#include "Engine.h"
+
 neu::Actor::Actor(const Actor& other){
 
 	name = other.name;
+
+	lifespan = other.lifespan;
 
 	tag = other.tag;
 
@@ -27,6 +31,18 @@ neu::Actor::Actor(const Actor& other){
 void neu::Actor::Update(){
 
 	if (!active) return; 
+
+	if (lifespan != 0){
+
+		lifespan -= g_time.deltaTime;
+		
+		if (lifespan <= 0){
+
+			setDestroy();
+		
+		}
+	
+	}
 
 	for (auto& component : m_components) {
 
@@ -127,6 +143,8 @@ bool neu::Actor::Read(const rapidjson::Value& value){
 	READ_DATA(value, name);
 
 	READ_DATA(value, active);
+
+	READ_DATA(value, lifespan);
 
 	if (value.HasMember("transform")) m_transform.Read(value["transform"]);
 

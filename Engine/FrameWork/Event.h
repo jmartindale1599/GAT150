@@ -24,4 +24,12 @@ namespace neu {
 
 	};
 
+	class INotify {
+
+	public:
+
+		virtual void OnNotify(const Event& event) = 0;
+
+	};
+
 }

@@ -9,15 +9,7 @@
 
 void neu::PlayerComponent::Initialize() {
 
-	auto component = m_owner->GetComponent<CollisionComponent>();
-
-	if (component) {
-
-		component->setCollisionEnter(std::bind(&PlayerComponent::onCollisionEnter, this, std::placeholders::_1));
-
-		component->setCollisionExit(std::bind(&PlayerComponent::onCollisionExit, this, std::placeholders::_1));
-
-	}
+	CharacterComponent::Initialize();
 
 }
 
@@ -25,7 +17,17 @@ void neu::PlayerComponent::Update(){
 
 	Vector2 direction = Vector2::zero;
 
+	auto camera = m_owner->GetScene()->getActorFromName("Camera");
+	
+	if (camera){
+
+		camera->m_transform.position = Math::Lerp(camera->m_transform.position, m_owner->m_transform.position, 2 * g_time.deltaTime);
+	
+	}
+
 	if (neu::g_inputSystem.GetKeyDown(neu::key_w)) {
+
+		//"jump"
 
 		direction = Vector2::up;
 
@@ -43,11 +45,15 @@ void neu::PlayerComponent::Update(){
 
 	}
 
+	Vector2 velocity;
+
 	auto component = m_owner->GetComponent<PhysicsComponent>();
 
 	if (component) {
 
-		component->ApplyForce(direction * m_speed);
+		component->ApplyForce(direction * speed);
+
+		velocity = component->velocity;
 
 	}
 
@@ -57,9 +63,17 @@ void neu::PlayerComponent::Update(){
 
 		if (component) {
 
-			component->ApplyForce(direction * m_speed);
+			component->ApplyForce(direction * speed);
 
 		}
+
+	}
+
+	auto renderComponent = m_owner->GetComponent<RenderComponent>();
+
+	if (renderComponent) {
+
+		if (velocity.x != 0) renderComponent->setFlipHorizontal(velocity.x < 0);
 
 	}
 
@@ -73,7 +87,9 @@ bool neu::PlayerComponent::Write(const rapidjson::Value& value) const{
 
 bool neu::PlayerComponent::Read(const rapidjson::Value& value){
 
-	READ_DATA(value, m_speed);
+	CharacterComponent::Read(value);
+
+	READ_DATA(value, jump);
 
 	return true;
 
@@ -95,12 +111,44 @@ void neu::PlayerComponent::onCollisionEnter(Actor* other){
 
 	}
 
+	if (other->getTag() == "Enemy") {
+
+		Event event;
+
+		event.name = "EVENT_ADD_POINTS";
+
+		event.data = damage;
+
+		event.reciever = other;
+
+		g_eventManager.Notify(event);
+
+	}
+
 	std::cout << "player enter\n";
 
 }
 
 void neu::PlayerComponent::onCollisionExit(Actor* other){
 
-	std::cout << "player enter\n";
+	std::cout << "player exit\n";
+
+}
+
+void neu::PlayerComponent::OnNotify(const Event& event){
+
+	if (event.name == "EVENt_DAMAGE") {
+
+		health -= std::get<float>(event.data);
+
+		std::cout << health << std::endl;
+
+		if (health <= 0) {
+
+			//player dead
+
+		}
+
+	}
 
 }

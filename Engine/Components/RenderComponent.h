@@ -4,6 +4,8 @@
 
 #include "Math/Rect.h"
 
+#include "Math/Vector2.h"
+
 #include "Renderer/Renderer.h"
 
 namespace neu {
@@ -16,9 +18,17 @@ namespace neu {
 
 		virtual Rect& GetSource() { return source; }
 
+		void setFlipHorizontal(bool flip = true) { flipHorizontal = flip; }
+
+		bool getFlipHorizontal() { return flipHorizontal; }
+
 	protected:
 
 		Rect source;
+
+		Vector2 registration = Vector2{ 0.5f, 0.5f };
+
+		bool flipHorizontal = false;
 
 	};
 

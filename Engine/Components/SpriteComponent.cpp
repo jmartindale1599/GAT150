@@ -1,7 +1,5 @@
 #include "SpriteComponent.h"
 
-#include "../Renderer/Renderer.h"
-
 #include "../FrameWork/Actor.h"
 
 #include "../Engine.h"
@@ -16,7 +14,7 @@ namespace neu {
 
 	void SpriteComponent::Draw(Renderer& renderer) {
 
-		renderer.Draw(m_texture, GetSource(), m_owner->m_transform);
+		renderer.Draw(m_texture, GetSource(), m_owner->m_transform, registration, flipHorizontal);
 
 	}
 
@@ -50,24 +48,24 @@ namespace neu {
 
 	}
 
-	Rect& SpriteAnimeComponent::GetSource(){
-		
-		Vector2 cellSize = m_texture->GetSize() / Vector2{ num_colums, num_rows };
+	//Rect& SpriteAnimeComponent::GetSource(){
+	//	
+	//	Vector2 cellSize = m_texture->GetSize() / Vector2{ num_colums, num_rows };
 
-		int column = (frame - 1) % num_colums;
-		
-		int row = (frame - 1) / num_colums;
+	//	int column = (frame - 1) % num_colums;
+	//	
+	//	int row = (frame - 1) / num_colums;
 
-		source.x = (int)(column * cellSize.x);
-		
-		source.y = (int)(row * cellSize.y);
-		
-		source.w = (int)(cellSize.x);
-		
-		source.h = (int)(cellSize.y);
+	//	source.x = (int)(column * cellSize.x);
+	//	
+	//	source.y = (int)(row * cellSize.y);
+	//	
+	//	source.w = (int)(cellSize.x);
+	//	
+	//	source.h = (int)(cellSize.y);
 
-		return source;
-	
-	}
+	//	return source;
+	//
+	//}
 
 }

@@ -5,7 +5,7 @@
 #define CLASS_CLONE(class) \
 	std::unique_ptr<GameObject> Clone() override { return std::make_unique<class>(*this); }
 
-#define REGISTER_CLASS(class) Factory::Instance().Register<class>(#class);
+#define REGISTER_CLASS(class) neu::Factory::Instance().Register<class>(#class);
 
 namespace neu {
 

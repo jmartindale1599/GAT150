@@ -145,6 +145,12 @@
     <ClCompile Include="Engine.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
+    <ClCompile Include="Components\CharacterComponent.cpp">
+      <Filter>Sources\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\CameraComponent.cpp">
+      <Filter>Sources\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Memory.h">
@@ -293,6 +299,12 @@
     </ClInclude>
     <ClInclude Include="FrameWork\EventManager.h">
       <Filter>Sources\FrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\CharacterComponent.h">
+      <Filter>Sources\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\CameraComponent.h">
+      <Filter>Sources\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

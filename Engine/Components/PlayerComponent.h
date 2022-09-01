@@ -4,9 +4,11 @@
 
 #include "Physics/Collision.h"
 
+#include "CharacterComponent.h"
+
 namespace neu {
 
-	class PlayerComponent : public Component, public ICollosion {
+	class PlayerComponent : public CharacterComponent {
 
 	public:
 
@@ -26,7 +28,9 @@ namespace neu {
 
 		virtual void onCollisionExit(Actor* other) override;
 		
-		float m_speed = 150;
+		virtual void OnNotify(const Event& event) override;
+
+		float jump = 150000;
 
 	};
 

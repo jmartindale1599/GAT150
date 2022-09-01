@@ -10,7 +10,7 @@
 
 namespace neu {
 
-	class CollisionComponent : public Component, public ICollosion {
+	class CollisionComponent : public Component, public ICollision {
 
 	public:
 
@@ -37,6 +37,8 @@ namespace neu {
 	private:
 
 		PhysicsSystem::CollisionData data;
+
+		Vector2 scaleOffset{ 1,1 };
 
 		functionPtr m_enterFunction;
 

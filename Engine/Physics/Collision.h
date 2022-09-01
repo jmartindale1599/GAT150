@@ -4,7 +4,7 @@ namespace neu {
 
 	class Actor;
 
-	class ICollosion {
+	class ICollision {
 
 	public:
 
