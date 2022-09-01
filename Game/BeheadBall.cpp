@@ -92,7 +92,7 @@ void BeheadBall::Update(){
 
 	case BeheadBall::gameState::game:
 
-		//neu::g_eventManager.Subscribe("EVENT_ADD_DIES");
+		neu::g_eventManager.Subscribe("EVENT_ADD_DIES", std::bind(&BeheadBall::ONPlayerDead, this, std::placeholders::_1));
 
 		break;
 
@@ -129,7 +129,7 @@ void BeheadBall::Draw(neu::Renderer& renderer){
 }
 
 void BeheadBall::ONAddPoints(const neu::Event& event){
-
+	\
 	addPoints(std::get<int>(event.data));
 
 	std::cout << event.name << std::endl;
@@ -143,5 +143,17 @@ void BeheadBall::ONPlayerDead(const neu::Event& event){
 	m_gameState = gameState::playerDied;
 
 	m_stateTimer = 4;
+
+}
+
+void BeheadBall::OnNotify(const neu::Event& event) {
+
+	if (event.name == "EVENT_PLAYER_DEAD"){
+
+		ONPlayerDead(event);
+
+		m_gameState = gameState::gameOver;
+	
+	}
 
 }

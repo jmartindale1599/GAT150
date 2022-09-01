@@ -4,7 +4,7 @@
 
 #include "FrameWork/Event.h"
 
-class BeheadBall : public neu::Game {
+class BeheadBall : public neu::Game, public neu::INotify {
 
 public:
 
@@ -29,6 +29,8 @@ public:
 	virtual void Update() override;
 
 	virtual void Draw(neu::Renderer& renderer) override;
+
+	virtual void OnNotify(const neu::Event& event) override;
 
 	void ONAddPoints(const neu::Event& event);
 

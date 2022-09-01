@@ -41,33 +41,62 @@ int main() {
 
 	game->Initialize();
 
-	bool quit = false;
+	bool g_quit = false;
 
-	while (!quit) {
+	bool m_continue = true;
 
-		//update
+	while (m_continue) {
 
-		neu::g_time.Tick();
+		while (!g_quit) {
 
-		neu::g_inputSystem.Update();
+			//update
 
-		neu::g_physicsSystem.Update();
+			neu::g_time.Tick();
 
-		neu::g_eventManager.Update();
+			neu::g_inputSystem.Update();
 
-		neu::g_audio.Update();
+			neu::g_physicsSystem.Update();
 
-		if (neu::g_inputSystem.GetKeyDown(neu::key_escape)) quit = true;
+			neu::g_eventManager.Update();
 
-		//render
+			neu::g_audio.Update();
 
-		game->Update();
+			if (neu::g_inputSystem.GetKeyDown(neu::key_escape)) g_quit = true;
 
-		neu::g_renderer.BeginFrame();
+			//render
 
-		game->Draw(neu::g_renderer);
+			game->Update();
 
-		neu::g_renderer.EndFrame();
+			neu::g_renderer.BeginFrame();
+
+			game->Draw(neu::g_renderer);
+
+			neu::g_renderer.EndFrame();
+
+			/*if (neu::g_gameOgre = true) {
+
+				g_quit = true;
+
+			}*/
+
+		}
+
+		cout << "do you wish to continue? (y/n)" << endl;
+
+		string playOn;
+
+		cin >> playOn;
+
+		if (playOn != "y") {
+
+			m_continue = false;
+
+		}
+		else {
+
+			m_continue = true;
+
+		}
 
 	}
 

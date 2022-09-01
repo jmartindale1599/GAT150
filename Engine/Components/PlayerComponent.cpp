@@ -142,6 +142,12 @@ void neu::PlayerComponent::onCollisionEnter(Actor* other){
 
 	}
 
+	if (other->getName() == "tile04") {
+
+		std::cout << "h winner is you!!!!!" << std::endl;
+
+	}
+
 	if (other->getName() == "tile01" && checkFace->getSequence() == "fire") {
 
 		Event event;
@@ -152,8 +158,7 @@ void neu::PlayerComponent::onCollisionEnter(Actor* other){
 
 		other->setDestroy();
 
-	}
-	else if (other->getName() == "tile01" && checkFace->getSequence() != "fire") {
+	}else if (other->getName() == "tile01" && checkFace->getSequence() != "fire") {
 
 		m_owner->setDestroy();
 

@@ -73,7 +73,7 @@
             "transform":{
                 "position":[
                     400,
-                    300
+                    -1800
                 ],
                 "scale":[
                     1,
