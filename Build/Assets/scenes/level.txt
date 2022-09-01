@@ -167,7 +167,10 @@
                     "damping":0.8,
                     "data.gravity_scale":1,
                     "data.constrain_angle":true
-                },
+                },{
+		    "type":"CameraComponent",
+		    "viewport_size":100
+},
                 {
                     "type":"CollisionComponent",
                     "data.size":[
