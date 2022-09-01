@@ -16,8 +16,8 @@
 					"type":"SpriteComponent",
 					"texture_name":"textures/tileset2_32x32.png",
 					"source":[
-						96,
-						416,
+						352,
+						256,
 						32,
 						32
 					]
@@ -51,8 +51,42 @@
 					"type":"SpriteComponent",
 					"texture_name":"textures/tileset2_32x32.png",
 					"source":[
-						0,
-						128,
+						352,
+						416,
+						32,
+						32
+					]
+				},
+				{
+					"type":"RBPhysicsComponent",
+					"data.isDynamic":false
+				},
+				{
+					"type":"CollisionComponent",
+					"data.size":[
+						64,
+						64
+					]
+				}
+			]
+		},{
+			"type":"Actor",
+			"name":"tile03",
+			"tag":"Ground",
+			"prefab":true,
+			"transform":{
+				"scale":[
+					2,
+					2
+				]
+			},
+			"components":[
+				{
+					"type":"SpriteComponent",
+					"texture_name":"textures/tileset2_32x32.png",
+					"source":[
+						352,
+						384,
 						32,
 						32
 					]
@@ -85,7 +119,7 @@
 					"num_columns": 13,
 					"num_rows": 10,
 					"size": [64, 64],
-					"tile_names": ["", "tile01", "tile02"],
+					"tile_names": ["", "tile01", "tile02", "tile03"],
 					"tiles": [
 							0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 							0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -93,7 +127,7 @@
 							0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 							0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 							0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0,
-							2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2,
+							2, 2, 2, 0, 3, 0, 0, 0, 0, 0, 2, 2, 2,
 							0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 							1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 							1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1

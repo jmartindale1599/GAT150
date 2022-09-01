@@ -38,6 +38,8 @@ namespace neu {
 
 		virtual void SetSequence(const std::string& name);
 
+		virtual std::string getSequence() { return m_sequence->name; };
+
 		Rect& GetSource() override;
 
 		virtual bool Write(const rapidjson::Value& value) const override;

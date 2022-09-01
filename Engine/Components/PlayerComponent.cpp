@@ -108,6 +108,8 @@ bool neu::PlayerComponent::Read(const rapidjson::Value& value){
 
 void neu::PlayerComponent::onCollisionEnter(Actor* other){
 
+	auto checkFace = m_owner->GetComponent<SpriteAnimeComponent>();
+
 	if (other->getName() == "Coin") {
 
 		Event event;
@@ -119,6 +121,43 @@ void neu::PlayerComponent::onCollisionEnter(Actor* other){
 		g_eventManager.Notify(event);
 
 		other->setDestroy();
+
+	}
+
+	if (other->getName() == "tile03") {
+
+		std::cout << "Waah" << std::endl;
+
+		Event event;
+
+		event.name = "EVENT_ADD_DIES";
+
+		event.data = 100;
+
+		g_eventManager.Notify(event);
+
+		m_owner->setDestroy();
+
+		//reset game
+
+	}
+
+	if (other->getName() == "tile01" && checkFace->getSequence() == "fire") {
+
+		Event event;
+
+		event.name = "EVENT_ADD_DIES";
+
+		g_eventManager.Notify(event);
+
+		other->setDestroy();
+
+	}
+	else if (other->getName() == "tile01" && checkFace->getSequence() != "fire") {
+
+		m_owner->setDestroy();
+
+		//reset game
 
 	}
 

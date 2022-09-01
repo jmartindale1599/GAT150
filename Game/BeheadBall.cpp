@@ -92,6 +92,8 @@ void BeheadBall::Update(){
 
 	case BeheadBall::gameState::game:
 
+		//neu::g_eventManager.Subscribe("EVENT_ADD_DIES");
+
 		break;
 
 	case BeheadBall::gameState::gameOver:

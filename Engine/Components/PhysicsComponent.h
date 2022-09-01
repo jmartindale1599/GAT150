@@ -16,6 +16,8 @@ namespace neu {
 
 		void Update() override;
 
+		virtual bool isDead() { if (this == nullptr) return true; }
+
 		virtual void ApplyForce(const Vector2& force) { acceleration += force; }
 
 		virtual bool Write(const rapidjson::Value& value) const override;
